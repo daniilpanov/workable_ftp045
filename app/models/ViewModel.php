@@ -4,7 +4,7 @@
 namespace app\models;
 
 
-class View extends Model
+class ViewModel extends Model
 {
     public static $path_to_views = "";
     

@@ -6,11 +6,11 @@ namespace app\commands;
 
 use app\factories\Factory;
 
-class Render extends Command
+class RenderCommands extends Command
 {
     private $renders = [];
 
-    public function render($view, ...$data)
+    public function renderC($view, ...$data)
     {
         $model = Factory::models()->createIfNotExists("View", ['view_name' => $view]);
 
@@ -28,7 +28,7 @@ class Render extends Command
         $this->renders[] = ['model' => $model, 'data' => $new_data];
     }
 
-    public function makeVisible()
+    public function makeVisibleC()
     {
         foreach ($this->renders as $render)
         {

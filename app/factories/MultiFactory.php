@@ -44,6 +44,12 @@ class MultiFactory extends BaseObj
     public function search($object, $params = [], $group = null, $one = false)
     {
         $instances = ($group !== null ? $this->instances[$object][$group] : $this->instances[$object]);
+
+        if (!$instances)
+        {
+            return [];
+        }
+
         $inst = [];
 
         foreach ($instances as $instance)

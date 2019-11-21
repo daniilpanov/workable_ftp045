@@ -19,7 +19,11 @@ class HTMLDocBuilder extends Builder
     public function __construct($title, $lang)
     {
         $this->lang = $lang;
-        $this->title = $title;
+        $this->tags[] = [
+            'name' => "title", 'root' => "head",
+            'attr' => [], 'closed' => true,
+            'content' => $title
+        ];
         
         $this->root_tag = "html";
     }
@@ -175,7 +179,6 @@ class HTMLDocBuilder extends Builder
     {
         echo "<!doctype html>\n<html lang='{$this->lang}'>";
         $current_root_tag = "html";
-        $title_init = false;
 
         foreach ($this->tags as $tag)
         {
@@ -185,12 +188,6 @@ class HTMLDocBuilder extends Builder
                     echo "</$current_root_tag>\n";
                 echo "\n<{$tag['root']}>\n";
                 $current_root_tag = $tag['root'];
-            }
-
-            if ($current_root_tag == "head" && !$title_init)
-            {
-                echo "\t<title>" . $this->title . "</title>\n";
-                $title_init = true;
             }
 
             $attrs = (isset($tag['attr']) ? $this->arrayToString($tag['attr']) : "");

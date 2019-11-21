@@ -52,3 +52,7 @@ Requiring failed: class 'app\factories\static_factories\StaticFactory' does not 
 Requiring failed: class 'engine\baseOf\StaticFactory' does not exist (19.11.2019 at 09:34:17)
 Requiring failed: class 'engine\baseOf\StaticFactory' does not exist (19.11.2019 at 09:34:41)
 Requiring failed: class 'app\factories\static_factories\StaticFactory' does not exist (19.11.2019 at 09:36:00)
+Requiring failed: class 'app\models\HTMLDocBuilderModel' does not exist (21.11.2019 at 11:49:28)
+Requiring failed: class 'app\models\HTMLDocBuilderModel' does not exist (21.11.2019 at 11:50:02)
+Requiring failed: class 'app\models\HTMLDocBuilderModel' does not exist (21.11.2019 at 11:50:33)
+Requiring failed: class 'app\builders\HTMLDocBuilderBuilder' does not exist (21.11.2019 at 11:51:37)
