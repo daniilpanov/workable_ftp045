@@ -1,10 +1,10 @@
 <?php
 
 
-namespace app\models;
+namespace app\builders;
 
 
-class HTMLDocument extends Model
+class HTMLDocBuilder extends Builder
 {
     public $lang;
     public $title;
@@ -171,7 +171,7 @@ class HTMLDocument extends Model
         return $this;
     }
 
-    public function rendering()
+    public function init()
     {
         echo "<!doctype html>\n<html lang='{$this->lang}'>";
         $current_root_tag = "html";

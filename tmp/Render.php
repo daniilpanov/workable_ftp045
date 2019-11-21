@@ -1,19 +1,18 @@
 <?php
 
 
-namespace app\controllers;
+namespace app\commands;
 
 
-use app\Factory;
+use app\factories\Factory;
 
-class Render extends Controller
+class Render extends Command
 {
     private $renders = [];
 
     public function render($view, ...$data)
     {
-        if (!$model = Factory::searchModel("View", ['view_name' => $view]))
-            $model = Factory::createModel("View", true, true, $view);
+        $model = Factory::models()->createIfNotExists("View", ['view_name' => $view]);
 
         $new_data = [];
 

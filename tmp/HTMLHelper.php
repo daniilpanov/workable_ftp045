@@ -1,39 +1,39 @@
 <?php
 
 
-namespace app\controllers;
+namespace app\helpers;
 
 
-use app\Factory;
-use app\models\HTMLDocument;
+use app\factories\Factory;
+use app\builders\HTMLDocBuilder;
 
-class HTMLHelper extends Controller
+class HTMLHelper extends Helper
 {
-    /** @var $html_model HTMLDocument|null */
+    /** @var $html_model HTMLDocBuilder|null */
     private $html_model = null;
 
     public function begin($title, $lng): self
     {
-        $this->html_model = Factory::createModel("HTMLDocument", null, false, $title, $lng);
+        $this->html_model = Factory::models()->createIfNotExists("HTMLDocBuilder", ['title' => $title, 'lang' => $lng]);
         return $this;
     }
 
-    public function head(): HTMLDocument
+    public function head(): HTMLDocBuilder
     {
         return $this->getDocModel()->createHead();
     }
 
-    public function body(): HTMLDocument
+    public function body(): HTMLDocBuilder
     {
         return $this->getDocModel()->renderHead()->createBody();
     }
 
     public function end()
     {
-        $this->getDocModel()->renderBody()->rendering();
+        $this->getDocModel()->renderBody()->init();
     }
 
-    public function getDocModel(): HTMLDocument
+    public function getDocModel(): HTMLDocBuilder
     {
         return $this->html_model;
     }
