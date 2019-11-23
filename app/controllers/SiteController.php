@@ -4,6 +4,8 @@
 namespace app\controllers;
 
 
+use app\commands\RenderCommands as Render;
+
 class SiteController extends Controller
 {
     private $lng = "ru";
@@ -25,7 +27,7 @@ class SiteController extends Controller
 
     public function page($page)
     {
-        echo $page;
+        Render::render("debug", ['var2' => $page], "components");
     }
 
     public function index()

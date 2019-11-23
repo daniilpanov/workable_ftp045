@@ -6,8 +6,6 @@ namespace app\models;
 
 class ViewModel extends Model
 {
-    public static $path_to_views = "";
-    
     public $view_name;
     
     public function __construct($view_name)
@@ -15,10 +13,11 @@ class ViewModel extends Model
         $this->view_name = $view_name;
     }
 
-    public function render($data)
+    public function render($data, $type = "action-views")
     {
+        // Распаковываем массив с параметрами
         extract($data, EXTR_OVERWRITE);
-
-        include (self::$path_to_views . $this->view_name . ".php");
+        // и подключаем вид
+        include (path_convert(PHP_HOME . "/views/" . $type . "/" . $this->view_name . ".php"));
     }
 }

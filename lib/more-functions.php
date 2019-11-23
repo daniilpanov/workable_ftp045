@@ -68,7 +68,7 @@ function load_file($filepath, $loading_type, $exception_string, $type = "php", $
 {
     if ($timestamp)
     {
-        $exception_string .= " (" . date("d\\.m\\.Y \\a\\t h\\:i\\:s") . ")";
+        $exception_string .= " (" . date("d\\.m\\.Y \\a\\t H\\:i\\:s") . ")";
     }
 
     $path = path_convert(PHP_HOME . "/$filepath.$type");

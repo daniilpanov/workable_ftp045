@@ -1,10 +1,10 @@
 <?php
 
-define("PHP_HOME", $_SERVER['DOCUMENT_ROOT'] . "/engine");
-define("PHP_DOMAIN", "http://localhost/engine");
+define("PHP_HOME", $_SERVER['DOCUMENT_ROOT'] . "/LAST-FTP!!!");
+define("PHP_DOMAIN", "http://localhost/LAST-FTP!!!");
 
 require_once PHP_HOME . "/lib/more-functions.php";
 
 system_config("autoload");
 
-\app\Kernel::get()->start();
+\engine\root\Kernel::get()->start();

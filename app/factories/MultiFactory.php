@@ -24,8 +24,8 @@ class MultiFactory extends BaseObj
             $object_key = $class;
 
         return ($save
-            ? $this->register(new $class(...$params), $object_key, $group)
-            : new $class(...$params));
+            ? $this->register(new $class(...array_values($params)), $object_key, $group)
+            : new $class(...array_values($params)));
     }
 
     protected function register($obj, $key, $group = null)
@@ -43,6 +43,9 @@ class MultiFactory extends BaseObj
 
     public function search($object, $params = [], $group = null, $one = false)
     {
+        if (!isset($this->instances[$object]))
+            $this->instances[$object] = [];
+
         $instances = ($group !== null ? $this->instances[$object][$group] : $this->instances[$object]);
 
         if (!$instances)

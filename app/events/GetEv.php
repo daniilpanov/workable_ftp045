@@ -18,7 +18,7 @@ class GetEv extends RequestEv
     public function preInit($get)
     {
         if ($this->get === null)
-            return ($get === null ? true : false);
+            return (empty($get) ? true : false);
 
         $found = [];
 

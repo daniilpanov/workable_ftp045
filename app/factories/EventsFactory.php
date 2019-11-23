@@ -41,11 +41,11 @@ class EventsFactory extends MultiFactory
         return $this->register($event, $clazz);
     }
 
-    public function unregister($event_name, $inst = null)
+    public function unregister($event_name, $key = null)
     {
-        /*if ($inst === null)
-            unset(self::$instances[$event_name]);
+        if ($key === null)
+            unset($this->instances[$event_name]);
         else
-            unset(self::$instances[$event_name][array_search($inst, self::$instances[$event_name])]);*/
+            unset($this->instances[$event_name][$key]);
     }
 }

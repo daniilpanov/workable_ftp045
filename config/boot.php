@@ -1,6 +1,6 @@
 <?php
 
-/** @var $Kernel \app\Kernel */
+/** @var $Kernel \engine\root\Kernel */
 global $Kernel;
 
 // Подключавем функции-хелперы

@@ -52,7 +52,7 @@ class EventKernel
                         $instance->run();
                     else
                         $instance->run($params2);
-                    //StaticFactory::events()->unregister($events_name, $instances[$events_name][$key]);
+                    Factory::events()->unregister($events_name, $key);
                 }
             }
         }
