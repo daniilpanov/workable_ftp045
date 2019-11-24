@@ -22,4 +22,5 @@ $Kernel->registerEvent((clone $get_builder)->get("page", "reviews")->method("rev
 $Kernel->registerEvent((clone $get_builder)->get("page", "contacts")->method("contacts")->init());
 $Kernel->registerEvent((clone $get_builder)->get("page", "([0-9]+)")->method("page")->init());
 // POST
-$Kernel->registerEvent((clone $post_builder)->post("contacts")->method("contactsSend")->init());
+$Kernel->registerEvent((clone $post_builder)->model("Contacts")->post("contacts")
+    ->method("contactsSend")->init());

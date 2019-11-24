@@ -5,6 +5,7 @@ namespace app\controllers;
 
 use app\commands\RenderCommands as Render;
 use app\factories\Factory;
+use app\models\ContactsModel;
 use engine\root\Kernel;
 
 class SiteController extends Controller
@@ -50,8 +51,8 @@ class SiteController extends Controller
         Render::render("reviews");
     }
 
-    public function contactsSend()
+    public function contactsSend(ContactsModel $model)
     {
-        echo "ok";
+
     }
 }

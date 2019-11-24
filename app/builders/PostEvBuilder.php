@@ -10,7 +10,7 @@ class PostEvBuilder extends Builder
 {
     public static $default_controller = null;
 
-    public $controller, $method = null, $post = null;
+    public $controller, $method = null, $post = null, $model;
 
     public function __construct()
     {
@@ -29,14 +29,20 @@ class PostEvBuilder extends Builder
         return $this;
     }
 
-    public function post($key = null, $value = null)
+    public function post($key = null)
     {
-        $this->post[$key] = $value;
+        $this->post = $key;
+        return $this;
+    }
+
+    public function model($modelname)
+    {
+        $this->model = $modelname;
         return $this;
     }
 
     public function init()
     {
-        return EventKernel::get()->create("Post", $this->post, $this->controller, $this->method);
+        return EventKernel::get()->create("Post", $this->post, $this->model, $this->controller, $this->method);
     }
 }
