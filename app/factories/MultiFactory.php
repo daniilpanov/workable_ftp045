@@ -46,7 +46,7 @@ class MultiFactory extends BaseObj
         if (!isset($this->instances[$object]))
             $this->instances[$object] = [];
 
-        $instances = ($group !== null ? $this->instances[$object][$group] : $this->instances[$object]);
+        $instances = ($group !== null ? @$this->instances[$object][$group] : @$this->instances[$object]);
 
         if (!$instances)
         {

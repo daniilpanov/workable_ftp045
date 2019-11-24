@@ -29,12 +29,18 @@ class DbCommands extends Command
         try
         {
             if (is_array($templates))
-                return $this->inst->pdo->prepare($sql)->execute($templates);
+            {
+                $sth = $this->inst->pdo->prepare($sql);
+                if (!$sth->execute($templates))
+                    return false;
+                return $sth;
+            }
             else
                 return $this->inst->pdo->query($sql);
         }
         catch (\PDOException $exception)
         {
+            echo $exception->getMessage();
             return false;
             // And logging before returning
         }

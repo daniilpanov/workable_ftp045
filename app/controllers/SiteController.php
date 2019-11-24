@@ -3,8 +3,9 @@
 
 namespace app\controllers;
 
-
 use app\commands\RenderCommands as Render;
+use app\factories\Factory;
+use engine\root\Kernel;
 
 class SiteController extends Controller
 {
@@ -22,16 +23,35 @@ class SiteController extends Controller
 
     public function lng($lng)
     {
-        echo $_SESSION['lng'] = $this->lng = $lng;
+        $_SESSION['lng'] = Kernel::get()->app()->language = $this->lng = $lng;
     }
 
     public function page($page)
     {
-        Render::render("debug", ['var2' => $page], "components");
+        //Render::render("debug", ['var2' => $page], "components");
+
+        $model = Factory::models()->createModel("Pages", [$page, Kernel::get()->app()->language]);
+        if ($model->page_exists)
+            Render::render("page", ['model' => $model]);
     }
 
     public function index()
     {
-        echo "Routing is working!..";
+        Render::render("home");
+    }
+
+    public function contacts()
+    {
+        Render::render("contacts");
+    }
+
+    public function reviews()
+    {
+        Render::render("reviews");
+    }
+
+    public function contactsSend()
+    {
+        echo "ok";
     }
 }

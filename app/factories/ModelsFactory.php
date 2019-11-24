@@ -5,6 +5,7 @@ namespace app\factories;
 
 
 use app\BaseObj;
+use app\commands\DbCommands;
 use app\models\Model;
 use app\models\TableModel;
 
@@ -58,8 +59,9 @@ class ModelsFactory extends MultiFactory
         return $this->search($model_name, $params, $group, $only_one);
     }
 
-    public function createSomeModels($model_name, $params, $group_id = null, $register = true)
+    public function createSomeModels($model_name, $params, $items = "*", $group_id = null, $register = true)
     {
+        $key = $model_name;
         $model_name .= "Model";
         $namespace = "app\\models\\$model_name";
         /** @var $ref \ReflectionClass */
@@ -70,10 +72,15 @@ class ModelsFactory extends MultiFactory
             if (!isset($params[$col]))
                 return false;
         }
+        $query = $namespace::getMultiQuery($params, $items);
 
-        $query = $namespace::getMultiQuery($params);
+        if (is_array($query) && isset($query['templates']))
+            $data = DbCommands::query($query['sql'], $query['templates']);
+        else
+            $data = DbCommands::query($query);
 
-        $data = [];
+        $data = $data->fetchAll();
+        $all_inst = [];
 
         foreach ($data as $datum)
         {
@@ -81,8 +88,12 @@ class ModelsFactory extends MultiFactory
             $inst = $ref->newInstanceWithoutConstructor();
             $inst->group($group_id);
             Model::setData($inst, $datum);
+
+            $all_inst[] = $inst;
         }
 
-        return $this->searchModel($model_name, [], $group_id);
+        $this->instances[$model_name][$group_id] = $all_inst;
+
+        return $this->searchModel($key, [], $group_id);
     }
 }

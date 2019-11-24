@@ -12,7 +12,7 @@ class RenderCommands extends Command
     /** @var $renders ViewModel[][] */
     private $renders = [];
 
-    public function renderC($view, $data, $type = "action-views")
+    public function renderC($view, $data = [], $type = "action-views")
     {
         $model = Factory::models()->createIfNotExists("View", ['view_name' => $view]);
 

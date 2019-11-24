@@ -1,0 +1,74 @@
+.red
+{
+    color: #af0000;
+}
+.blue
+{
+    color: darkblue;
+}
+.darkblue
+{
+    color: #000050;
+}
+.green
+{
+    color: #00af00;
+}
+.yellow
+{
+    color: #ffbf00;
+}
+
+/*exclamation*/
+.excl
+{
+    font-size: x-large;
+}
+.exc-u_l
+{
+    font-size: x-large;
+    text-decoration: underline darkred;
+}
+
+.header
+{
+    text-align: center;
+    font-size: xx-large;
+}
+
+div.header
+{
+    width: 100%;
+}
+
+.frame
+{
+    margin: 2px;
+    padding: 3px;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 1px;
+}
+
+.frame-item
+{
+    border: 1px solid black;
+    border-radius: 1px;
+    width: 100%;
+    padding: 3px;
+}
+
+.frame-item .row .col-md:first-child
+{
+    text-align: right;
+}
+
+.frame-item .row .col-md:last-child
+{
+    text-align: left;
+}
+
+.center
+{
+    text-align: center;
+}

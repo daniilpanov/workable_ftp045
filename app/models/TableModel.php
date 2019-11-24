@@ -8,5 +8,5 @@ abstract class TableModel extends Model
 {
     abstract public static function getKeyCols();
 
-    abstract public static function getMultiQuery($params): string;
+    abstract public static function getMultiQuery($params, $items = "*");
 }

@@ -15,6 +15,7 @@ class HTMLDocBuilder extends Builder
      *  ?'content' => <content>?]
      */
     public $tags = [];
+    public $body_class = null;
 
     public function __construct($title, $lang)
     {
@@ -127,9 +128,10 @@ class HTMLDocBuilder extends Builder
     }
 
 
-    public function createBody()
+    public function createBody($body_class = null)
     {
         $this->root_tag = "body";
+        $this->body_class = $body_class;
         return $this;
     }
     
@@ -186,7 +188,9 @@ class HTMLDocBuilder extends Builder
             {
                 if ($current_root_tag !== "html")
                     echo "</$current_root_tag>\n";
-                echo "\n<{$tag['root']}>\n";
+                echo ($tag['root'] == "body" && $this->body_class !== null)
+                    ? "\n<{$tag['root']} class='" . $this->body_class . "'>\n"
+                    : "\n<{$tag['root']}>";
                 $current_root_tag = $tag['root'];
             }
 

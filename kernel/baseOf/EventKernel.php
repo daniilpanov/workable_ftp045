@@ -39,6 +39,8 @@ class EventKernel
 
     public function runBy($events_name, $params)
     {
+        if ($events_name == "Post")
+            var_dump($params);
         $events_name .= "Ev";
 
         /** @var $instances SafetyEvent[] */

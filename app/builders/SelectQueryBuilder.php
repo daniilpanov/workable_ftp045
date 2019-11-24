@@ -12,8 +12,7 @@ class SelectQueryBuilder extends QueryBuilder
         $order = null,
         $order_type = "ASC",
         $limit = null,
-        $group = null,
-        $templates = [];
+        $group = null;
 
     private function addTemplate($name, $value)
     {
@@ -43,10 +42,25 @@ class SelectQueryBuilder extends QueryBuilder
         return $this;
     }
 
+    public function selectString($cols)
+    {
+        $parsed_cols = explode(", ", $cols);
+
+        foreach ($parsed_cols as $col)
+        {
+            $this->select($col);
+        }
+
+        return $this;
+    }
+
     public function where($col, $value, $op = null, $op2 = "=", $templates = true)
     {
         if (is_array($value))
         {
+            if (empty($value))
+                return $this;
+
             $this->where($col, $value[0], $op, ">=", $templates);
             $this->where($col, $value[1], "AND", "<", $templates);
         }
@@ -66,6 +80,14 @@ class SelectQueryBuilder extends QueryBuilder
     public function and($col, $value, $op2 = "=", $templates = true)
     {
         return $this->where($col, $value, "AND", $op2, $templates);
+    }
+
+    public function order($by, $how = "ASC")
+    {
+        $this->order = $by;
+        $this->order_type = $how;
+
+        return $this;
     }
 
     public function init()
@@ -93,17 +115,26 @@ class SelectQueryBuilder extends QueryBuilder
             $this->sql .= "$item, ";
         }
 
-        $this->sql = substr($this->sql, 0, -2) . " WHERE ";
+        $this->sql = substr($this->sql, 0, -2);
 
-        foreach ($this->where as $item)
+        if (!empty($this->where))
         {
-            $str = " `{$item['col']}` {$item['op2']} {$item['val']} ";
-            if ($item['op'])
-                $str = $item['op'] . $str;
-            $this->sql .= $str;
+            $this->sql .= " WHERE ";
+
+            foreach ($this->where as $item)
+            {
+                $str = " `{$item['col']}` {$item['op2']} {$item['val']} ";
+                if ($item['op'])
+                    $str = $item['op'] . $str;
+                $this->sql .= $str;
+            }
+        }
+
+        if ($this->order)
+        {
+            $this->sql .= " ORDER BY " . $this->order . " " . $this->order_type;
         }
 
         return $this;
     }
-
 }

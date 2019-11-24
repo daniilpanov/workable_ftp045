@@ -1,0 +1,262 @@
+::-webkit-scrollbar
+{
+    background-color: rgba(0, 0, 0, 0.75);
+    width: 14px;
+}
+::-webkit-scrollbar-track
+{
+    background-color: rgb(105, 105, 105);
+
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+
+    border-radius: 12px;
+}
+::-webkit-scrollbar-thumb
+{
+    background-color: #f0ddbf;
+
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+
+    border-radius: 12px;
+}
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment
+{
+    height: 30px;
+    display: block;
+    background-color: transparent;
+}
+::-webkit-scrollbar:window-inactive,
+::-webkit-scrollbar-track
+{
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+body
+{
+    background-color: #f0ddbf;
+    margin-bottom: 10px;
+}
+
+header
+{
+    background-color: #c3ac84;
+}
+
+main
+{
+    padding: 5px 2px;
+}
+
+footer
+{
+    text-align: right;
+}
+
+h1
+{
+    color: #990000;
+}
+
+h2, h3, h4
+{
+    color: #015b64;
+}
+
+th, td
+{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #000033;
+}
+
+a
+{
+    text-decoration: none;
+    color: #750512;
+    border: none;
+}
+a:hover
+{
+    color: #c01319;
+    text-decoration: underline;
+}
+a:active
+{
+    color: #750512 !important;
+    text-decoration: none !important;
+}
+
+.radio-label
+{
+    border-radius: 6px;
+    border: 1px solid black;
+    padding: 10px 5px;
+}
+
+.radio-label
+{
+    background-color: rgba(128, 128, 128, 0.5);
+}
+
+.radio-label input[type='radio']
+{
+    display: none;
+}
+.radio-label label
+{
+    border: none;
+    display: inline;
+    margin: 3px 10px;
+    cursor: pointer;
+}
+
+#top-products
+{
+    margin: 2px;
+    padding: 2px;
+    border: 1px;
+    text-align: center;
+}
+
+main div
+{
+    display: inline-block;
+}
+
+main #left-sidebar
+{
+    float: left;
+    color: white;
+    text-align: center;
+    background-color: #e89522;
+}
+
+main #content
+{
+
+}
+
+main #content .review
+{
+    display: block;
+    margin: 20px 5px 5px;
+    text-align: center;
+    max-width: 50%;
+    border: 3px blue solid;
+    border-radius: 5px;
+}
+
+main #right-sidebar
+{
+    margin-left: 10px;
+    border: 3px black double;
+    padding: 6px;
+    max-width: 10%;
+    min-width: 2.5%;
+    min-height: 15%;
+    overflow-x: auto;
+}
+
+main #left-sidebar *,
+main #right-sidebar *
+{
+    display: block;
+}
+
+#menu
+{
+    box-shadow: 0 0 5px 3px darkblue;
+    -o-box-shadow: 0 0 5px 3px darkblue;
+    -moz-box-shadow: 0 0 5px 3px darkblue;
+    -webkit-box-shadow: 0 0 5px 3px darkblue;
+    background-color: #000033;
+}
+
+#menu .navbar-toggler, #menu .navbar-toggler-icon
+{
+    width: auto !important;
+    height: auto !important;
+}
+
+#menu a, #menu input, #menu button
+{
+    font-family: "Comic Sans MS", serif;
+    font-weight: bold;
+    text-align: center;
+    color: darkorange;
+    margin: 2px;
+    padding: 10px;
+    text-decoration: none;
+    display: inline-block;
+    height: auto;
+    background-color: #000033;
+
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+
+    transition-duration: 1s;
+    -o-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -webkit-transition-duration: 1s;
+}
+
+#menu a:hover, #menu input:hover, #menu button:hover
+{
+    color: darkgreen;
+    background-color: #f0ddbf;
+
+    transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -webkit-transition-duration: 0.5s;
+
+    box-shadow: inset 3px 3px 6px 2px #000033;
+    -o-box-shadow: inset 3px 3px 6px 2px #000033;
+    -moz-box-shadow: inset 3px 3px 6px 2px #000033;
+    -webkit-box-shadow: inset 3px 3px 6px 2px #000033;
+}
+
+/*#brand img
+{
+    box-shadow: 0 0 10px 4px #645a4e;
+    -o-box-shadow: 0 0 10px 4px #645a4e;
+    -moz-box-shadow: 0 0 10px 4px #645a4e;
+    -webkit-box-shadow: 0 0 10px 4px #645a4e;
+
+    width: 100%;
+}*/
+
+#open-sidebar
+{
+    display: none;
+}
+
+.zoom-imgs.row
+{
+    margin: 5px;
+    background-color: white;
+}
+
+.zoom-imgs .col-md
+{
+    display: flex;
+    margin: 5px !important;
+    align-items: center;
+}
+
+.zoom-imgs .col-md .img
+{
+    width: 100% !important;
+    max-height: 100% !important;
+}
+
+#after-content
+{
+    margin-top: 10px;
+}

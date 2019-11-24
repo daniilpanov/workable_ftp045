@@ -22,9 +22,9 @@ class HTMLHelper extends Helper
         return self::getDocModel()->createHead();
     }
 
-    public static function body(): HTMLDocBuilder
+    public static function body($body_class = null): HTMLDocBuilder
     {
-        return self::getDocModel()->renderHead()->createBody();
+        return self::getDocModel()->renderHead()->createBody($body_class);
     }
 
     public static function end()

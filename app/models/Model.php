@@ -27,6 +27,9 @@ abstract class Model extends BaseObj
 
     public static function setData($obj, $data_arr)
     {
+        if (!$data_arr)
+            return;
+
         if (is_assoc($data_arr))
         {
             foreach ($data_arr as $col => $value)
@@ -37,7 +40,7 @@ abstract class Model extends BaseObj
         else
         {
             $cols = array_keys(get_object_vars($obj));
-            var_dump($data_arr);
+
             for ($i = 0; $i < count($data_arr); $i++)
             {
                 $col = $cols[$i];
