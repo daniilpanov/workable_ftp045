@@ -6,7 +6,7 @@ namespace app\models;
 
 class ContactsModel extends Model
 {
-    public $company, $email, $message;
+    public $company, $email, $subject, $message;
 
     public function __construct($data)
     {

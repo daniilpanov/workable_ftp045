@@ -14,15 +14,6 @@ class SelectQueryBuilder extends QueryBuilder
         $limit = null,
         $group = null;
 
-    private function addTemplate($name, $value)
-    {
-        if (isset($this->templates[$name]))
-            $name = $this->addTemplate($name . "i", $value);
-        $this->templates[$name] = $value;
-
-        return $name;
-    }
-
     public function from($table, $database = null)
     {
         $this->from[] = ($database ? $database . "." . $table : $table);
@@ -90,6 +81,12 @@ class SelectQueryBuilder extends QueryBuilder
         return $this;
     }
 
+    public function limit($end, $begin = null)
+    {
+        $this->limit = ($begin ? [$end, $begin] : $end);
+        return $this;
+    }
+
     public function init()
     {
         $this->sql = "SELECT ";
@@ -133,6 +130,15 @@ class SelectQueryBuilder extends QueryBuilder
         if ($this->order)
         {
             $this->sql .= " ORDER BY " . $this->order . " " . $this->order_type;
+        }
+
+        if ($this->limit)
+        {
+            $this->sql .= " LIMIT "
+                . (is_array($this->limit)
+                    ? implode(", ", $this->limit)
+                    : $this->limit
+                );
         }
 
         return $this;

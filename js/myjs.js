@@ -22,4 +22,6 @@ $(document).ready(function () {
         el.width(window.innerWidth - 45);
         el.height(el.width() / prop - 50);
     });
+
+    ratingSetUp();
 });

@@ -49,12 +49,13 @@ header
 
 main
 {
-    padding: 5px 2px;
+    padding: 5px 2px 0 0;
 }
 
 footer
 {
-    text-align: right;
+    border-top: 1px solid black;
+    margin-bottom: -10px;
 }
 
 h1
@@ -123,49 +124,15 @@ a:active
     text-align: center;
 }
 
-main div
+.sidebar
 {
-    display: inline-block;
+    background-color: #E89522;
+    padding-bottom: 20px;
 }
 
-main #left-sidebar
+#content
 {
-    float: left;
-    color: white;
-    text-align: center;
-    background-color: #e89522;
-}
-
-main #content
-{
-
-}
-
-main #content .review
-{
-    display: block;
-    margin: 20px 5px 5px;
-    text-align: center;
-    max-width: 50%;
-    border: 3px blue solid;
-    border-radius: 5px;
-}
-
-main #right-sidebar
-{
-    margin-left: 10px;
-    border: 3px black double;
-    padding: 6px;
-    max-width: 10%;
-    min-width: 2.5%;
-    min-height: 15%;
-    overflow-x: auto;
-}
-
-main #left-sidebar *,
-main #right-sidebar *
-{
-    display: block;
+    padding-bottom: 20px;
 }
 
 #menu

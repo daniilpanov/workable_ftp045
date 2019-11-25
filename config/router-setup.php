@@ -14,13 +14,30 @@ $get_builder = factory("builders")->createBuilder("GetEv");
 /** @var $post_builder Post */
 $post_builder = factory("builders")->createBuilder("PostEv");
 
+//
+//
+$get = (function () use ($get_builder)
+{
+    return (clone $get_builder);
+});
+//
+$post = (function () use ($post_builder)
+{
+    return (clone $post_builder);
+});
+//
+$reg = (function ($builder) use ($Kernel)
+{
+    $Kernel->registerEvent($builder->init());
+});
+
 // Call to Kernel to method 'registerEvent' to set a request rule
 // GET
-$Kernel->registerEvent((clone $get_builder)->get("lng", "([a-z]+)")->method("lng")->init());
-$Kernel->registerEvent((clone $get_builder)->method("index")->init());
-$Kernel->registerEvent((clone $get_builder)->get("page", "reviews")->method("reviews")->init());
-$Kernel->registerEvent((clone $get_builder)->get("page", "contacts")->method("contacts")->init());
-$Kernel->registerEvent((clone $get_builder)->get("page", "([0-9]+)")->method("page")->init());
+$reg($get()->get("lng", "([a-z]+)")->method("lng"));
+$reg($get()->method("index"));
+$reg($get()->get("page", "reviews")->method("reviews"));
+$reg($get()->get("page", "contacts")->method("contacts"));
+$reg($get()->get("page", "([0-9]+)")->method("page"));
 // POST
-$Kernel->registerEvent((clone $post_builder)->model("Contacts")->post("contacts")
-    ->method("contactsSend")->init());
+$reg($post()->model("Contacts")->post("contacts")->method("contactsSend"));
+$reg($post()->model("Review")->post("review")->method("reviewSend"));

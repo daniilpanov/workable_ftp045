@@ -18,6 +18,7 @@ HTML::head()
     ->link("css/bootstrap/bootstrap.min.css", "stylesheet")
     //->link("css/bootstrap/bootstrap-grid.min.css", "stylesheet")
     //->link("css/bootstrap/bootstrap-reboot.min.css", "stylesheet")
+    ->link("css/stars.css", "stylesheet")
     ->link("css/style.css", "stylesheet")
     ->link("css/content.css", "stylesheet")
     // JS Scripts
@@ -25,6 +26,7 @@ HTML::head()
     //->script("js/bootstrap/bootstrap.bundle.min.js")
     ->script("js/bootstrap/bootstrap.min.js")
     //->script("https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/esm/popper.min.js")
+    ->script("js/rating.js")
     ->script("js/myjs.js");
 
 HTML::body("container-fluid")->header(function () {

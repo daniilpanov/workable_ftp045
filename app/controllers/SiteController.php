@@ -5,7 +5,9 @@ namespace app\controllers;
 
 use app\commands\RenderCommands as Render;
 use app\factories\Factory;
+use app\helpers\MailHelper;
 use app\models\ContactsModel;
+use app\models\ReviewModel;
 use engine\root\Kernel;
 
 class SiteController extends Controller
@@ -48,11 +50,24 @@ class SiteController extends Controller
 
     public function reviews()
     {
-        Render::render("reviews");
+        $models = Factory::models()->createSomeModels("Reviews", ['limit' => 5], "*", "reviews");
+        Render::render("reviews", ['reviews' => $models]);
     }
 
     public function contactsSend(ContactsModel $model)
     {
+        MailHelper::mail(
+            "memonik@inbox.ru",
+            $model->email, $model->email,
+            (isset($model->subject)
+                ? $model->subject
+                : "Сообщение с сайта panoff-design.ru"
+            ), $model->message
+        )->send();
+    }
 
+    public function reviewSend(ReviewModel $model)
+    {
+        $model->save();
     }
 }

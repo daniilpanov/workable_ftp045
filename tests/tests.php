@@ -7,13 +7,20 @@ require_once PHP_HOME . "/lib/more-functions.php";
 
 system_config("autoload");
 
-use app\helpers\HTMLHelper as HTML;
+use app\helpers\MailHelper as Mail;
 
 include_lib("helpers");
 include_lib("debug");
 
 
-HTML::begin("Hello", "ru");
-HTML::head();
-HTML::body()->main("HELLO, MY FRIEND!");
-HTML::end();
+/** @var $model \app\models\MailModel */
+$model = Mail::mail(
+    $_POST['to'],
+    $_POST['from'],
+    $_POST['reply-to'],
+    $_POST['subject'],
+    $_POST['message'],
+    (!empty($_FILES['attachments']) ? $_FILES['attachments'] : null)
+);
+
+$model->send();

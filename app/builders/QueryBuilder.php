@@ -11,6 +11,15 @@ abstract class QueryBuilder extends Builder
     protected $sql;
     protected $templates = [];
 
+    protected function addTemplate($name, $value)
+    {
+        if (isset($this->templates[$name]))
+            $name = $this->addTemplate($name . "i", $value);
+        $this->templates[$name] = $value;
+
+        return $name;
+    }
+
     public function getSql()
     {
         return ($this->initialized ? $this->sql : $this->init()->sql);

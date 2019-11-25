@@ -54,10 +54,19 @@
         </div>
         <div class="row">
             <div class="col-md">
-                <label for="3">Текст отзыва: </label>
+                <label for="3">Тема:</label>
             </div>
             <div class="col-md">
-                <textarea id="3" name="message"></textarea>
+                <input type="text" id="3" name="subject">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md">
+                <label for="4">Текст: </label>
+            </div>
+            <div class="col-md">
+                <textarea id="4" name="message"></textarea>
             </div>
         </div>
         <div class="row">

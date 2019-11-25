@@ -35,6 +35,7 @@ $links = \app\factories\Factory::models()
             <?php
             tagA(null, "home");
             tagA("contacts", "contacts");
+            tagA("reviews", "reviews");
 
             foreach ($links as $link)
             {
@@ -55,7 +56,7 @@ $links = \app\factories\Factory::models()
 
 <div class="row" id="after-content">
     <!-- Sidebar -->
-    <div class="col-md-4" id="sidebar">
+    <div class="col-md-4 sidebar">
         <?php
         //
         show_view("sidebar", "components");

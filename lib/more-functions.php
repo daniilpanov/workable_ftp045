@@ -1,9 +1,19 @@
 <?php
 
-function getUrl()
+function echoRatingStars($number, $input_name, $selected = 1)
 {
-    $url = ((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-    return $url;
+    echo "<div class='rating-stars'>";
+
+    for ($i = 1; $i <= $number; $i++)
+    {
+        echo "<label class='star"
+            . ($i == $selected ? " star-selected" : "")
+            . "'><input type='radio' name='$input_name' value='$i'"
+            . ($i == $selected ? " checked" : "")
+            . "></label>";
+    }
+
+    echo "</div>";
 }
 
 function is_image($filename)
