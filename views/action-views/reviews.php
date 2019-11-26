@@ -4,7 +4,7 @@
 function reviewItem($item_name, $item_class, $item)
 {
     if ($item)
-        echo "<p class='$item_class'>$item_name: $item</p>";
+        echo "<div class='row $item_class'><div class='col-md-4'>$item_name</div><div class='col-md-5'>$item</div></div>";
 }
 
 foreach ($reviews as $review)
