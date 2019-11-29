@@ -3,7 +3,6 @@
 use app\helpers\HTMLHelper as HTML;
 use engine\root\Kernel;
 
-
 HTML::begin(
     Kernel::get()->app()->title,
     Kernel::get()->app()->language

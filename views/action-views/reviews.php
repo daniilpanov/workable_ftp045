@@ -1,4 +1,8 @@
+<span class="header red">Отзывы</span>
+<hr>
+
 <?php
+
 /** @var $reviews \app\models\ReviewsModel[] */
 
 function reviewItem($item_name, $item_class, $item)
@@ -9,12 +13,12 @@ function reviewItem($item_name, $item_class, $item)
 
 foreach ($reviews as $review)
 {
-    echo "<div class='review'>";
+    echo "<blockquote class='review'>";
     reviewItem("Автор", "author", $review->name);
     reviewItem("E-Mail", "email", $review->email);
     reviewItem("Рейтинг", "rating", (int) $review->rating);
     reviewItem("Отзыв", "content", $review->content);
-    echo "</div>";
+    echo "</blockquote>";
 }
 ?>
 

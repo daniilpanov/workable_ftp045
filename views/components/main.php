@@ -6,7 +6,7 @@ function tagA($id, $name)
         . (@$_GET['page'] == $id
             ? " active" : "")
         . "'>";
-    $name = strtoupper($name);
+    $name = mb_strtoupper($name);
     echo ($id === null)
         ? "<a class='nav-link' href='" . PHP_DOMAIN . "'>$name</a>"
         : "<a class='nav-link' href='?page=$id'>$name</a>";
@@ -54,7 +54,7 @@ $links = \app\factories\Factory::models()
 </nav>
 
 
-<div class="row" id="after-content">
+<div class="row" id="after-menu">
     <!-- Sidebar -->
     <div class="col-md-4 sidebar">
         <?php

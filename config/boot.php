@@ -1,5 +1,7 @@
 <?php
 
+mb_internal_encoding("UTF-8");
+
 /** @var $Kernel \engine\root\Kernel */
 global $Kernel;
 
