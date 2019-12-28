@@ -18,33 +18,38 @@ final class Factory extends SingletonFactory
         return self::$instance->$name(...$arguments);
     }
 
-    public function modelsFactory(): ModelsFactory
+    public function modelsFactory()
     {
         return $this->get(ModelsFactory::class);
     }
 
-    public function eventsFactory(): EventsFactory
+    public function eventsFactory()
     {
         return $this->get(EventsFactory::class);
     }
 
-    public function commandsFactory(): CommandsFactory
+    public function commandsFactory()
     {
         return $this->get(CommandsFactory::class);
     }
 
-    public function controllersFactory(): ControllersFactory
+    public function controllersFactory()
     {
         return $this->get(ControllersFactory::class);
     }
 
-    public function buildersFactory(): BuildersFactory
+    public function buildersFactory()
     {
         return $this->get(BuildersFactory::class);
     }
 
-    public function reflectionFactory(): ReflectionFactory
+    public function reflectionFactory()
     {
         return $this->get(ReflectionFactory::class);
+    }
+
+    public function getFactory($factory)
+    {
+        return $this->get("app\\factories\\{$factory}Factory");
     }
 }

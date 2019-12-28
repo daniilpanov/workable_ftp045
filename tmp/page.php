@@ -48,6 +48,7 @@
 
 <p>
     <img src="files/upload/images/for_2.8.png" alt="" class="float-left">
+<p>
     Еще один функциональный способ использования второго яруса — обустройство домашней библиотеки.
     В частном доме она может быть солидной, с кожаными креслами в английском стиле.
     Книжные шкафы сплошной стеной до потолка.  Лестница в классическом стиле с резным первым столбом
@@ -56,8 +57,8 @@
     открытой площадкой с комфортной высотой потолка.
 
 <p>
-    <img src="files/upload/images/for_2.10.png" alt="" class="float-left">
-    <img src="files/upload/images/for_2.9.png" alt="" class="float-right">
+    <img src="files/upload/images/for_2.10.png" alt="" class="float-left smarg">
+    <img src="files/upload/images/for_2.9.png" alt="" class="float-right smarg">
     Второй ярус может занимать весь периметр комнаты или холла частного дома.
     Так наверху будет место для нескольких функциональных зон.
 

@@ -3,7 +3,8 @@
 /** @var $Kernel \engine\root\Kernel */
 global $Kernel;
 
-use app\builders\{GetEvBuilder as Get, PostEvBuilder as Post};
+use app\builders\GetEvBuilder as Get;
+use app\builders\PostEvBuilder as Post;
 use app\controllers\SiteController;
 
 Get::$default_controller = SiteController::class;

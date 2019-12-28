@@ -1,4 +1,7 @@
 <?php
+
+use app\factories\Factory;
+
 //
 function tagA($id, $name)
 {
@@ -12,14 +15,10 @@ function tagA($id, $name)
         : "<a class='nav-link' href='?page=$id'>$name</a>";
     echo "</li>";
 }
+
 //
-$links = \app\factories\Factory::models()
-    ->createSomeModels(
-        "Pages",
-        ['language' => \engine\root\Kernel::get()->app()->language],
-        "id, name",
-        "menu"
-    );
+$links = Factory::models()
+    ->searchModel("Pages", ['is_in_top' => "1"], "menu")
 ?>
 <!-- Top Menu -->
 <nav id="menu" class="navbar navbar-expand-md">

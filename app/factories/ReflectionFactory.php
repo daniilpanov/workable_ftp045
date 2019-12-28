@@ -6,7 +6,7 @@ namespace app\factories;
 
 class ReflectionFactory extends SingletonFactory
 {
-    public function getRef($class): \ReflectionClass
+    public function getRef($class)
     {
         return $this->get($class, "\ReflectionClass", [$class]);
     }

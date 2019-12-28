@@ -10,12 +10,12 @@ use app\factories\Factory;
 
 class Queries extends Helper
 {
-    public static function select(): SelectQueryBuilder
+    public static function select()
     {
         return Factory::builders()->createBuilder("SelectQuery");
     }
 
-    public static function insert(): InsertQueryBuilder
+    public static function insert()
     {
         return Factory::builders()->createBuilder("InsertQuery");
     }

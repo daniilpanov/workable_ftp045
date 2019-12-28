@@ -9,17 +9,16 @@ use app\factories\Factory;
 
 abstract class Model extends BaseObj
 {
-    const RETURN = -1;
-
     private $group = null;
 
     /**
      * @param $group string|int|null
+     * @param $ret null|mixed
      * @return string|int|null|void
      */
-    public function group($group = self::RETURN)
+    public function group($group = null, $ret = null)
     {
-        if ($group === self::RETURN)
+        if ($group === null && $ret === null)
             return $this->group;
 
         $this->group = $group;

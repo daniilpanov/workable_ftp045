@@ -15,7 +15,8 @@ abstract class RequestEv extends SafetyEvent
             })
             : (function ($arguments = []) use ($controller)
             {
-                factory("controllers")->getController($controller, true)(...$arguments);
+                $controller = factory("controllers")->getController($controller, true);
+                $controller(...$arguments);
             });
 
         parent::__construct($func);

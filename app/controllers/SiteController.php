@@ -15,9 +15,9 @@ class SiteController extends Controller
 {
     private $lng = "ru";
 
-    public function boot()
+    public function __construct()
     {
-        $this->lng = $_COOKIE['lng'];
+        $this->lng = isset($_COOKIE['lng']) ? $_COOKIE['lng'] : "ru";
     }
     
     public function anAction()
@@ -70,10 +70,15 @@ class SiteController extends Controller
 
     public function contactsSend(ContactsModel $model)
     {
+        function email()
+        {
+
+        }
+
         MailHelper::mail(
-            "memonik@inbox.ru",
+            "memonik@inbox.ru", //"test-7yk75@mail-tester.com",
             $model->email, $model->email,
-            (isset($model->subject)
+            ($model->subject
                 ? $model->subject
                 : "Сообщение с сайта panoff-design.ru"
             ), $model->message

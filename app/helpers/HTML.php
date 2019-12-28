@@ -4,8 +4,6 @@
 namespace app\helpers;
 
 
-use app\builders\HTMLBuilder;
-
 class HTML extends Helper
 {
     public function begin()
@@ -13,12 +11,12 @@ class HTML extends Helper
         
     }
 
-    public function head($title): HTMLBuilder
+    public function head($title)
     {
         
     }
 
-    public function body(): HTMLBuilder
+    public function body()
     {
         
     }

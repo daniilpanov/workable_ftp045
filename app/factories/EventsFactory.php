@@ -18,14 +18,14 @@ class EventsFactory extends MultiFactory
         );
     }
 
-    public function createEvent($event_name, $params = []): Event
+    public function createEvent($event_name, $params = [])
     {
         $event_name .= "Ev";
         $event = "app\\events\\$event_name";
         return $this->create($event, $params, $event_name, false);
     }
 
-    public function createAndRegister($event_name, $params = []): Event
+    public function createAndRegister($event_name, $params = [])
     {
         $event_name .= "Ev";
         $event_namespace = "app\\events\\{$event_name}";

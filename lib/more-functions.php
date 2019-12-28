@@ -1,5 +1,7 @@
 <?php
 
+use app\helpers\Url;
+
 function echoRatingStars($number, $input_name, $selected = 1)
 {
     echo "<div class='rating-stars'>";
@@ -129,4 +131,9 @@ function load_file($filepath, $loading_type, $exception_string, $type = "php", $
 function path_convert($path, $delimiter = "/", $new_delimiter = DIRECTORY_SEPARATOR)
 {
     return str_replace($delimiter, $new_delimiter, $path);
+}
+
+function is_v3()
+{
+    return true;
 }

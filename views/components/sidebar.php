@@ -1,18 +1,38 @@
 <?php
 
-function printImgs($models)
+function printImgs($models, $top = false)
 {
-    echo "<div class='row center zoom-imgs'>";
+    $counted = count($models);
 
-    for ($i = 0; $i < count($models); $i++)
+    echo ($top)
+        ? "<div class='frame'><div class='frame-item row center zoom-imgs'>"
+        : "<div class='row center zoom-imgs'>";
+
+    for ($i = 0; $i < $counted; $i++)
     {
-        echo "<div class='col-md'><img src='files/" . $models[$i]->value . "' alt='Img№$i' class='img'></div>";
+        echo "<div class='col-md'><img src='" . (is_v3() ? "" : "v3/") . "files/" . $models[$i]->value . "' alt='Img№$i' class='img'></div>";
 
-        if (($i+1) % 2 == 0)
+        if (($i+1) % 2 == 0 && $i + 1 < $counted)
             echo "<div class='w-100'></div>";
     }
 
+    echo ($top) ? "<i class='red'>Мы предлагаем <wbr>различные стилевые решения.</i></div>" : "";
     echo "</div>";
+}
+
+/**
+ * @param $models \app\models\PagesModel[]
+ */
+function printList($models)
+{
+    echo "<ul>";
+
+    foreach ($models as $model)
+    {
+        echo "<li><a href='?page=" . $model->id . "'>" . mb_strtoupper($model->name) . "</a></li>";
+    }
+
+    echo "</ul>";
 }
 
 /** @var $factory_models \app\factories\ModelsFactory */
@@ -27,10 +47,18 @@ if (!$factory_models->searchModel("Constants", [], "const", true))
 $top_products = $factory_models->searchModel("Constants", ['name' => "top-products"], "const");
 /** @var $sidebar_img \app\models\ConstantsModel[] */
 $sidebar_img = $factory_models->searchModel("Constants", ['name' => "sidebar-img"], "const");
+/** @var $sidebar_img \app\models\PagesModel[] */
+$samples = $factory_models->searchModel("Pages", ['is_in_top' => "0"], "menu");
 
 //
+echo "<hr>";
 printImgs($sidebar_img);
-
 //
-echo "<div class='header'>Top Products</div>";
-printImgs($top_products);
+if (!empty($samples))
+{
+    echo "<hr><span class='excl'>Образцы наших работ</span>";
+    printList($samples);
+}
+//
+echo "<hr>";
+printImgs($top_products, true);

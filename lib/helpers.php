@@ -13,5 +13,5 @@ function global_factory()
 
 function factory($factory)
 {
-    return global_factory()::$factory();
+    return \app\factories\Factory::$factory();
 }

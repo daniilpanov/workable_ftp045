@@ -34,7 +34,7 @@ abstract class QueryBuilder extends Builder
             ] : $this->getSql();
     }
 
-    public function query(bool $fetch = true, bool $all = true)
+    public function query($fetch = true, $all = true)
     {
         $res = DbCommands::query(
             $this->getSql(),

@@ -25,12 +25,17 @@ class ProviderKernel
      * @param BaseObj $object
      * @return ProvidingObj|BaseObj
      */
-    public function makeObjectProvidable(BaseObj $object)
+    public function makeObjectProvidable($object)
     {
         return new ProvidingObj($object);
     }
 
-    public function provide(ProvidingObj $obj, Provider $provider, $params)
+    /**
+     * @param ProvidingObj $obj
+     * @param Provider $provider
+     * @param array $params
+     */
+    public function provide($obj, $provider, $params)
     {
         $methods = (isset($params['methods']) ? $params['methods'] : []);
         $vars = (isset($params['vars']) ? $params['vars'] : []);

@@ -68,7 +68,7 @@ class SelectQueryBuilder extends QueryBuilder
         return $this;
     }
 
-    public function and($col, $value, $op2 = "=", $templates = true)
+    public function wand($col, $value, $op2 = "=", $templates = true)
     {
         return $this->where($col, $value, "AND", $op2, $templates);
     }

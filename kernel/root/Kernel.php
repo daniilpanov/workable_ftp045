@@ -25,7 +25,7 @@ class Kernel
 
     private static $instance = null;
 
-    public static function get(): self
+    public static function get()
     {
         if (self::$instance === null)
         {

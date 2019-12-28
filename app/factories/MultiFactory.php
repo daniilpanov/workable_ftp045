@@ -13,9 +13,9 @@ class MultiFactory extends BaseObj
     protected static $providing = false;
     protected $instances;
 
-    public static function providing(bool $providing = true)
+    public static function providing($providing = null)
     {
-        self::$providing = $providing;
+        self::$providing = ($providing === true);
     }
 
     protected function create($class, $params = [], $object_key = null, $save = true, $group = null)

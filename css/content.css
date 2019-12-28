@@ -68,7 +68,7 @@ div.header
 {
     border: 1px solid black;
     border-radius: 1px;
-    width: 100%;
+    /*width: 100%;*/
     padding: 3px;
 }
 
@@ -85,4 +85,9 @@ div.header
 .center
 {
     text-align: center;
+}
+
+.smarg
+{
+    margin: 10px;
 }

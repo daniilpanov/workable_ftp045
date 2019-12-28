@@ -17,12 +17,12 @@ class HTMLHelper extends Helper
         return self::$html_model = Factory::builders()->createBuilder("HTMLDoc", $title, $lng);
     }
 
-    public static function head(): HTMLDocBuilder
+    public static function head()
     {
         return self::getDocModel()->createHead();
     }
 
-    public static function body($body_class = null): HTMLDocBuilder
+    public static function body($body_class = null)
     {
         return self::getDocModel()->renderHead()->createBody($body_class);
     }
@@ -32,7 +32,7 @@ class HTMLHelper extends Helper
         self::getDocModel()->renderBody()->init();
     }
 
-    public static function getDocModel(): HTMLDocBuilder
+    public static function getDocModel()
     {
         return self::$html_model;
     }
