@@ -9,6 +9,9 @@ use app\helpers\MailHelper;
 use app\models\ContactsModel;
 use app\models\PagesModel;
 use app\models\ReviewModel;
+
+use engine\base\Controller;
+use engine\base\GroupModel;
 use engine\root\Kernel as K;
 
 class SiteController extends Controller
@@ -35,7 +38,8 @@ class SiteController extends Controller
     {
         //Render::render("debug", ['var2' => $page], "components");
         /** @var $model PagesModel */
-        $model = Factory::models()->createModel("Pages", [$page, K::get()->app()->language]);
+        $model = Factory::models()->createModel("Pages");
+        $model->fromDB($page);
 
         if ($model->page_exists)
             Render::render("page", ['model' => $model]);
@@ -69,7 +73,13 @@ class SiteController extends Controller
         K::get()->app()->keywords = "panoff, panoff design, лестницы, design отзывы";
         K::get()->app()->title = "Отзывы";
 
-        $models = Factory::models()->createSomeModels("Reviews", ['limit' => 5], "*", "reviews");
+        $models = Factory::models()->addGroup(
+            GroupModel::createGroupFromDB(
+                "reviews",
+                "ReviewsModel",
+                "*", ['limit' => [5]]
+            )
+        );
         Render::render("reviews", ['reviews' => $models]);
     }
 

@@ -27,11 +27,10 @@ abstract class QueryBuilder extends Builder
 
     public function getSqlInfo()
     {
-        return ($this->templates)
-            ? [
+        return [
                 'sql' => $this->getSql(),
                 'templates' => $this->templates
-            ] : $this->getSql();
+            ];
     }
 
     public function query($fetch = true, $all = true)

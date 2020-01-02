@@ -8,23 +8,37 @@ use app\BaseObj;
 use app\commands\DbCommands;
 use app\models\Model;
 use app\models\TableModel;
+use engine\base\GroupModel;
 
 class ModelsFactory extends MultiFactory
 {
+    /** @var $groups GroupModel[]|null */
+    private $groups;
+
+    public function __construct()
+    {
+        $this->groups = [];
+        $this->groups['default'] = new GroupModel("default");
+    }
+
     /**
      * @param $model_name
      * @param array $params
      * @param bool $register
-     * @return \app\BaseObj|\app\ProvidingObj
+     * @return \app\BaseObj|\app\ProvidingObj|bool
      */
     public function createModel($model_name, $params = [], $register = true)
     {
         $model_name .= "Model";
         $model = "app\\models\\$model_name";
+        $instance = new $model(...$params);
 
-        $instance = $this->create($model, $params, $model_name, $register);
+        //$instance = $this->create($model, $params, $model_name, $register);
 
-        return $instance;
+        return ($register
+            ? $this->groups['default']
+                ->add($model_name, $instance, count($this->groups['default']->models))
+            : $instance);
     }
 
     /**
@@ -48,23 +62,38 @@ class ModelsFactory extends MultiFactory
     /**
      * @param $model_name
      * @param array $params
-     * @param null $group
+     * @param string $group
      * @param bool $only_one
-     * @return BaseObj[]|BaseObj
+     * @return BaseObj[]|BaseObj|bool|null
      */
-    public function searchModel($model_name, $params = [], $group = null, $only_one = false)
+    public function searchModel($model_name, $params = [], $group = 'default', $only_one = false)
     {
         $model_name .= "Model";
 
-        return $this->search($model_name, $params, $group, $only_one);
+        return (isset($this->groups[$group])
+            ? $this->groups[$group]->search($params, $model_name, $only_one)
+            : false);
     }
 
-    public function createSomeModels($model_name, $params, $items = "*", $group_id = null, $register = true)
+    public function getGroup($name = 'default')
+    {
+        return (isset($this->groups[$name]) ? $this->groups[$name] : null);
+    }
+
+    /**
+     * @param $group GroupModel
+     */
+    public function addGroup($group)
+    {
+        $this->groups[$group->id] = $group;
+    }
+
+    /*public function createSomeModels($model_name, $params, $items = "*", $group_id = null, $register = true)
     {
         $key = $model_name;
         $model_name .= "Model";
         $namespace = "app\\models\\$model_name";
-        /** @var $ref \ReflectionClass */
+        /!! @var $ref \ReflectionClass !/
         $ref = Factory::reflection()->getRef($namespace);
 
         foreach ($namespace::getKeyCols() as $col)
@@ -84,7 +113,7 @@ class ModelsFactory extends MultiFactory
 
         foreach ($data as $datum)
         {
-            /** @var $inst TableModel */
+            /!! @var $inst TableModel !/
             $inst = $ref->newInstanceWithoutConstructor();
             $inst->group($group_id);
             Model::setData($inst, $datum);
@@ -95,5 +124,5 @@ class ModelsFactory extends MultiFactory
         $this->instances[$model_name][$group_id] = $all_inst;
 
         return $this->searchModel($key, [], $group_id);
-    }
+    }*/
 }

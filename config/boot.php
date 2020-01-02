@@ -18,9 +18,11 @@ $Kernel->bootRouter();
 
 //
 \app\factories\Factory::models()
-    ->createSomeModels(
-        "Pages",
-        ['language' => \engine\root\Kernel::get()->app()->language],
-        "id, name, is_in_top",
-        "menu"
+    ->addGroup(
+        \engine\base\GroupModel::createGroupFromDB(
+            "menu",
+            "PagesModel",
+            "id, name, is_in_top",
+            ['where' => [\engine\root\Kernel::get()->app()->language]]
+        )
     );

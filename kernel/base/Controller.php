@@ -1,12 +1,10 @@
 <?php
 
 
-namespace app\controllers;
+namespace engine\base;
 
-
-use app\BaseObj;
 
 abstract class Controller extends BaseObj
 {
-    
+
 }

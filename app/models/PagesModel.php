@@ -8,17 +8,17 @@ use app\helpers\Queries;
 use app\helpers\Url;
 use engine\root\Kernel;
 
-class PagesModel extends TableModel
+class PagesModel extends \engine\base\TableModel
 {
     public $id, $name, $content,
         $language, $keywords,
         $description, $position, $title, $is_in_top, $page_exists;
 
-    public function __construct($id, $language)
+    public function fromDB($id)
     {
-        self::setData($this, Queries::select()
+        $this->setData(Queries::select()
             ->from("pages")->where("id", intval($id))
-            ->wand("language", $language)->order("position")->query(true, false));
+            ->query(true, false));
 
         $this->page_exists = isset($this->id);
 
@@ -52,5 +52,20 @@ class PagesModel extends TableModel
             ->wand("id", (isset($params['id']) ? $params['id'] : []))
             ->order("position")
             ->getSqlInfo();
+    }
+
+    public function where($lng)
+    {
+        return [['col' => 'language', 'op' => '=', 'val' => $lng]];
+    }
+
+    public function order()
+    {
+        return ['position', 'ASC'];
+    }
+
+    public function getTable()
+    {
+        return "pages";
     }
 }

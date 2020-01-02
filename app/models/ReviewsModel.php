@@ -6,7 +6,7 @@ namespace app\models;
 
 use app\helpers\Queries;
 
-class ReviewsModel extends TableModel
+class ReviewsModel extends \engine\base\TableModel
 {
     public $id, $name, $email, $rating, $content;
 
@@ -19,5 +19,15 @@ class ReviewsModel extends TableModel
     {
         return Queries::select()->selectString($items)
             ->from("reviews")->limit($params['limit'])->getSqlInfo();
+    }
+
+    public function getTable()
+    {
+        return "reviews";
+    }
+
+    public function limit($limit)
+    {
+        return [$limit];
     }
 }

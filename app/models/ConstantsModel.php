@@ -4,9 +4,10 @@
 namespace app\models;
 
 
+use engine\base\TableModel as TM;
 use app\helpers\Queries;
 
-class ConstantsModel extends TableModel
+class ConstantsModel extends TM
 {
     public $id, $name, $value, $translate;
 
@@ -19,5 +20,15 @@ class ConstantsModel extends TableModel
     {
         return Queries::select()->selectString($items)
             ->from("constants")->where("name", $params['name'])->getSqlInfo();
+    }
+
+    public function getTable()
+    {
+        return "constants";
+    }
+
+    public function where($name)
+    {
+        return [['col' => 'name', 'op' => '=', 'val' => $name]];
     }
 }

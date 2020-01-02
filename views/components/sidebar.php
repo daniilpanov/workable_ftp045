@@ -7,13 +7,15 @@ function printImgs($models, $top = false)
     echo ($top)
         ? "<div class='frame'><div class='frame-item row center zoom-imgs'>"
         : "<div class='row center zoom-imgs'>";
-
-    for ($i = 0; $i < $counted; $i++)
+    $i = 1;
+    foreach ($models as $model)
     {
-        echo "<div class='col-md'><img src='" . (is_v3() ? "" : "v3/") . "files/" . $models[$i]->value . "' alt='Img№$i' class='img'></div>";
+        echo "<div class='col-md'><img src='" . (is_v3() ? "" : "v3/") . "files/" . $model->value . "' alt='Img№$i' class='img'></div>";
 
-        if (($i+1) % 2 == 0 && $i + 1 < $counted)
+        if ($i % 2 == 0 && $i < $counted)
             echo "<div class='w-100'></div>";
+
+        $i++;
     }
 
     echo ($top) ? "<i class='red'>Мы предлагаем <wbr>различные стилевые решения.</i></div>" : "";
@@ -40,14 +42,22 @@ $factory_models = factory("models");
 
 if (!$factory_models->searchModel("Constants", [], "const", true))
 {
-    $factory_models->createSomeModels("Constants", ['name' => []], '*', "const");
+    $factory_models->addGroup(
+        \engine\base\GroupModel
+            ::createGroupFromDB(
+                "const",
+                "ConstantsModel",
+                "*", ['where' => [[]]]
+            )
+    );
+    //createSomeModels("Constants", ['name' => []], '*', "const");
 }
 
 /** @var $top_products \app\models\ConstantsModel[] */
 $top_products = $factory_models->searchModel("Constants", ['name' => "top-products"], "const");
 /** @var $sidebar_img \app\models\ConstantsModel[] */
 $sidebar_img = $factory_models->searchModel("Constants", ['name' => "sidebar-img"], "const");
-/** @var $sidebar_img \app\models\PagesModel[] */
+/** @var $samples \app\models\PagesModel[] */
 $samples = $factory_models->searchModel("Pages", ['is_in_top' => "0"], "menu");
 
 //
