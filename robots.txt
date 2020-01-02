@@ -1,16 +1,12 @@
 User-Agent: BadBot
 Disallow: /
 
-User-Agent: Google
-User-Agent: YandexBot
-User-Agent: YandexImage
-User-Agent: YandexWebmaster
-User-Agent: YandexBlogs
-User-Agent: YandexVideos
-User-Agent: YandexDirect
-User-Agent: YandexMedia
+User-Agent: *
+Allow: /files/upload/
+Disallow: /*.php
+Disallow: /*.js
+Disallow: /*.css
+Disallow: /*.sql
 
-Allow: /
-Disallow: /views/
-Disallow: /v3/views/
-Sitemap: http://panoff-design.ru/files/browser/sitemap.xml
+Host: http://www.panoff-design.ru/
+Sitemap: http://www.panoff-design.ru/files/browser/sitemap.xml

@@ -14,6 +14,7 @@ use engine\root\Kernel as K;
 class SiteController extends Controller
 {
     private $lng = "ru";
+    public $mail_sent = null;
 
     public function __construct()
     {
@@ -42,8 +43,12 @@ class SiteController extends Controller
 
     public function index()
     {
-        K::get()->app()->description = "";
-        K::get()->app()->keywords = "";
+        K::get()->app()->description = "Главная страница сайта Panoff Design.
+         Гарантия качества, стильные и современные решения, потрясающий дизайн - вот то, что отличает нас
+         от остальных производителей. Вы легко можете связаться с нами, оставить отзыв, или посмотреть наши статьи,
+         которые могут помочь Вам при выборе продукции и дизайна";
+        K::get()->app()->keywords = "Главная, главная страница, panoff, design, дизайн, panoff-design, интерьер,
+        стильные, недорого, премиум, лучшее, лестницы, мебель";
         K::get()->app()->title = "Главная страница";
 
         Render::render("home");
@@ -51,8 +56,8 @@ class SiteController extends Controller
 
     public function contacts()
     {
-        K::get()->app()->description = "";
-        K::get()->app()->keywords = "";
+        K::get()->app()->description = "Наши контакты";
+        K::get()->app()->keywords = "panoff, panoff design, лестницы, design контакты, обратная связь, feedback";
         K::get()->app()->title = "Контакты";
 
         Render::render("contacts");
@@ -60,8 +65,8 @@ class SiteController extends Controller
 
     public function reviews()
     {
-        K::get()->app()->description = "";
-        K::get()->app()->keywords = "";
+        K::get()->app()->description = "Отзывы о нашем сайте и о нашей продукции";
+        K::get()->app()->keywords = "panoff, panoff design, лестницы, design отзывы";
         K::get()->app()->title = "Отзывы";
 
         $models = Factory::models()->createSomeModels("Reviews", ['limit' => 5], "*", "reviews");
@@ -70,14 +75,9 @@ class SiteController extends Controller
 
     public function contactsSend(ContactsModel $model)
     {
-        function email()
-        {
-
-        }
-
-        MailHelper::mail(
+        $this->mail_sent = MailHelper::mail(
             "memonik@inbox.ru", //"test-7yk75@mail-tester.com",
-            $model->email, $model->email,
+            explode("@", $model->email)[0] . "@panoff-design.ru", $model->email,
             ($model->subject
                 ? $model->subject
                 : "Сообщение с сайта panoff-design.ru"

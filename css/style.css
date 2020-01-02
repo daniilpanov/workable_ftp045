@@ -40,6 +40,7 @@ body
 {
     background-color: #f0ddbf;
     margin-bottom: 10px;
+    overflow-x: hidden;
 }
 
 header
@@ -242,4 +243,15 @@ a:active
 .sidebar
 {
     max-width: 350px;
+}
+
+.zoomed
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    box-shadow: 0 0 500px 250px black;
 }

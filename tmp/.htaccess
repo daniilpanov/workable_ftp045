@@ -1,14 +1,32 @@
+<IfModule mod_setenvif.c>
+	SetEnv TZ Europe/Moscow
+</IfModule>
+ServerSignature On
+AddDefaultCharset UTF-8
+
 AddHandler x-httpd-php56 .php
 
-Options +FollowSymLinks
+Options All -ExecCGI +Indexes -Includes +FollowSymLinks
+
 IndexIgnore */*
-RewriteEngine On
 
-RewriteCond %{REQUEST_URI} !^/(v3)
-RewriteCond %{REQUEST_URI} !robots.txt
-RewriteRule (.*) /v3/$1
+<IfModule mod_rewrite.c>
+    RewriteEngine On
 
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_URI} !^/robots.txt$
-RewriteRule . /v3/index.php
+    RewriteBase /
+
+    RewriteCond %{HTTP_HOST} ^panoff-design
+    RewriteRule (.*) http://www.panoff-design.ru/$1 [R=301,L]
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
+    RewriteRule ^index\.php$ http://www.panoff-design.ru/ [R=301,L]
+
+    RewriteCond %{REQUEST_URI} !(v3)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_URI} !(robots.txt)
+    RewriteRule (.*) v3/$1
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} !(robots.txt)
+    RewriteRule . v3/index.php
+</IfModule>

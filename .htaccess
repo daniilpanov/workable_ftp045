@@ -6,10 +6,39 @@ AddDefaultCharset UTF-8
 #RewriteCond %{REQUEST_FILENAME} !-d
 #RewriteRule ^(.*)$ http://panoff-design.ru/v3/
 
-Options +FollowSymLinks
-IndexIgnore */*
-RewriteEngine On
+#Options +FollowSymLinks
+#IndexIgnore */*
+#RewriteEngine On
+#
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule (.*) index.php
 
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule (.*) index.php
+<IfModule mod_setenvif.c>
+	SetEnv TZ Europe/Moscow
+</IfModule>
+ServerSignature On
+AddDefaultCharset UTF-8
+
+Options All -ExecCGI +Indexes -Includes +FollowSymLinks
+
+IndexIgnore */*
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    RewriteBase /
+
+    RewriteCond %{REQUEST_URI} !/
+    RewriteRule (v3) http://www.panoff-design.ru/ [R=301,L]
+
+    RewriteCond %{HTTP_HOST} ^panoff-design
+    RewriteRule (.*) http://www.panoff-design.ru/$1 [R=301,L]
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
+    RewriteRule index\.php http://www.panoff-design.ru/ [R=301,L]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} !(robots.txt)
+    RewriteRule . /
+</IfModule>

@@ -24,4 +24,23 @@ $(document).ready(function () {
     });
 
     ratingSetUp();
+
+    $("img").each(function (index, element)
+    {
+        var clickImg = (function ()
+        {
+            var el = $(this);
+            $("body").css("overflow-y", "hidden");
+            el.unbind("click");
+            $("<img src='" + el.prop("src") + "' class='zoomed' alt='Sorry, this image cannot be zoomed!'>")
+                .appendTo("body").width(el.width() * 2.5).height(el.height() * 2.5)
+                .click(function ()
+                {
+                    el.click(clickImg);
+                    $("body").css("overflow-y", "scroll");
+                    $(this).remove();
+                });
+        });
+        $(element).click(clickImg);
+    });
 });

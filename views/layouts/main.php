@@ -14,6 +14,8 @@ HTML::head()
     ->meta("Keywords", Kernel::get()->app()->keywords)
     ->meta(null, "text/html; charset=utf-8", "Content-Type")
     ->meta("msapplication-config", "files/browser/browserconfig.xml")
+    ->meta("robots", "all")
+    ->meta("yandex-verification", "878254cda0545350")
     // Stylesheets
     ->link((is_v3() ? "" : "v3/") . "css/bootstrap/bootstrap.min.css", "stylesheet")
     //->link("css/bootstrap/bootstrap-grid.min.css", "stylesheet")
