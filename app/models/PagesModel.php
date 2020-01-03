@@ -10,9 +10,9 @@ use engine\root\Kernel;
 
 class PagesModel extends \engine\base\TableModel
 {
-    public $id, $name, $content,
+    public $id, $parent, $name, $content,
         $language, $keywords,
-        $description, $position, $title, $is_in_top, $page_exists;
+        $description, $position, $title, $is_link, $page_exists;
 
     public function fromDB($id)
     {

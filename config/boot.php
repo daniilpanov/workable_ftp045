@@ -22,7 +22,7 @@ $Kernel->bootRouter();
         \engine\base\GroupModel::createGroupFromDB(
             "menu",
             "PagesModel",
-            "id, name, is_in_top",
+            "id, parent, name, is_link",
             ['where' => [\engine\root\Kernel::get()->app()->language]]
         )
     );

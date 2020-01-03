@@ -45,4 +45,23 @@ class DbCommands extends Command
             // And logging before returning
         }
     }
+
+    public function pagesSortC($id = 0)
+    {
+        $result = [];
+        $pages = Factory::models()->searchModel("Pages", ['parent' => $id], "menu");
+
+        if ($pages)
+        {
+            foreach ($pages as $item)
+            {
+                if ($tmp = $this->pagesSortC($item->id))
+                    $result[] = ['parent' => $item, 'submenu' => $tmp];
+                else
+                    $result[] = $item;
+            }
+        }
+
+        return $result;
+    }
 }

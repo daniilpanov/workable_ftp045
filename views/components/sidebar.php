@@ -22,21 +22,6 @@ function printImgs($models, $top = false)
     echo "</div>";
 }
 
-/**
- * @param $models \app\models\PagesModel[]
- */
-function printList($models)
-{
-    echo "<ul>";
-
-    foreach ($models as $model)
-    {
-        echo "<li><a href='?page=" . $model->id . "'>" . mb_strtoupper($model->name) . "</a></li>";
-    }
-
-    echo "</ul>";
-}
-
 /** @var $factory_models \app\factories\ModelsFactory */
 $factory_models = factory("models");
 
@@ -57,18 +42,10 @@ if (!$factory_models->searchModel("Constants", [], "const", true))
 $top_products = $factory_models->searchModel("Constants", ['name' => "top-products"], "const");
 /** @var $sidebar_img \app\models\ConstantsModel[] */
 $sidebar_img = $factory_models->searchModel("Constants", ['name' => "sidebar-img"], "const");
-/** @var $samples \app\models\PagesModel[] */
-$samples = $factory_models->searchModel("Pages", ['is_in_top' => "0"], "menu");
 
 //
 echo "<hr>";
 printImgs($sidebar_img);
-//
-if (!empty($samples))
-{
-    echo "<hr><span class='excl'>Образцы наших работ</span>";
-    printList($samples);
-}
 //
 echo "<hr>";
 printImgs($top_products, true);

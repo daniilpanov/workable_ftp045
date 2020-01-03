@@ -1,6 +1,6 @@
 <?php
 
-use app\factories\Factory;
+use app\commands\DbCommands;
 
 //
 function tagA($id, $name)
@@ -16,9 +16,43 @@ function tagA($id, $name)
     echo "</li>";
 }
 
+function dropdownItem($id, $name)
+{
+    echo "<li><a href='?page=$id'>$name</a></li>";
+}
+
+/**
+ * @param $menu \app\models\PagesModel[]
+ * @param $first_level bool
+ */
+function dropdownMenu($menu, $first_level = true)
+{
+    echo "<li class='dropdown" . ($first_level ? "" : " dropdown-submenu") . "'>";
+    if ($menu['parent']->is_link)
+    {
+        echo "<a href='?page=" . $menu['parent']->id . "'>" . $menu['parent']->name . "</a>";
+        echo "<a class='dropdown-toggle' data-toggle='dropdown'><b class='caret'></b></a>";
+    }
+    else
+    {
+        echo "<a href='#' class='dropdown-toggle' data-toggle='dropdown'>" . $menu['parent']->name . "&emsp;<b class='caret'></b></a>";
+    }
+    echo "<ul class='dropdown-menu'>";
+
+    foreach ($menu['submenu'] as $submenu_item)
+    {
+        if (is_array($submenu_item))
+            dropdownMenu($submenu_item, false);
+        else
+            dropdownItem($submenu_item->id, $submenu_item->name);
+    }
+
+    echo "</ul>";
+    echo "</li>";
+}
+
 //
-$links = Factory::models()
-    ->searchModel("Pages", ['is_in_top' => "1"], "menu")
+$links = DbCommands::pagesSort();
 ?>
 <!-- Top Menu -->
 <nav id="menu" class="navbar navbar-expand-md">
@@ -38,10 +72,17 @@ $links = Factory::models()
 
             foreach ($links as $link)
             {
-                $id = $link->id;
-                $name = $link->name;
+                if (is_array($link))
+                {
+                    dropdownMenu($link);
+                }
+                else
+                {
+                    $id = $link->id;
+                    $name = $link->name;
 
-                tagA($id, $name);
+                    tagA($id, $name);
+                }
             }
             ?>
         </ul>

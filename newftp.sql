@@ -57,6 +57,7 @@ CREATE TABLE `pages` (
   `description` mediumtext,
   `position` bigint(20) DEFAULT NULL,
   `title` varchar(200) DEFAULT NULL,
+  `is_in_top` enum('0', '1') DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
