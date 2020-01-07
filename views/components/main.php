@@ -31,7 +31,7 @@ function dropdownMenu($menu, $first_level = true)
     if ($menu['parent']->is_link)
     {
         echo "<a href='?page=" . $menu['parent']->id . "'>" . $menu['parent']->name . "</a>";
-        echo "<a class='dropdown-toggle' data-toggle='dropdown'><b class='caret'></b></a>";
+        echo "<a class='dropdown-toggle empty' data-toggle='dropdown'><b class='caret'></b></a>";
     }
     else
     {
