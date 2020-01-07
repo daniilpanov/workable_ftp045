@@ -49,7 +49,7 @@ class HTMLDocBuilder extends Builder
             $attrs['charset'] = $charset;
 
         //
-        $tag = ['name' => "link", 'root' => $this->root_tag, 'attr' => $attrs, 'closed' => false];
+        $tag = ['name' => "meta", 'root' => $this->root_tag, 'attr' => $attrs, 'closed' => false];
         $this->tags[] = $tag;
 
         return $this;
