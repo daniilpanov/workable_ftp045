@@ -9,7 +9,7 @@ global $Kernel;
 include_lib("helpers");
 // Booting
 $Kernel->bootUrl(getUrl());
-$Kernel->bootDatabase("localhost", "newftp", "php", "12345");
+$Kernel->bootDatabase("localhost", "z159472_pn11", "php", "12345");
 //$Kernel->bootDatabase("mysqlserver", "z159472_pn11", "z159472_pn11", "Nikolay4664P");
 // и настройки роутера (с помощью регистрации событий)
 system_config("router-setup");

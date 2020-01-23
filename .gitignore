@@ -1,7 +1,2 @@
 .idea/
 !.idea/workable_ftp045
-
-config/
-!config/router-setup.php
-
-index.php
