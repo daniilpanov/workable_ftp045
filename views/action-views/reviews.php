@@ -10,15 +10,17 @@ function reviewItem($item_name, $item_class, $item)
     if ($item)
         echo "<div class='row $item_class'><div class='col-md-4'>$item_name</div><div class='col-md-5'>$item</div></div>";
 }
-
-foreach ($reviews as $review)
+if ($reviews)
 {
-    echo "<blockquote class='review'>";
-    reviewItem("Автор", "author", $review->name);
-    reviewItem("E-Mail", "email", $review->email);
-    reviewItem("Рейтинг", "rating", (int) $review->rating);
-    reviewItem("Отзыв", "content", $review->content);
-    echo "</blockquote>";
+    foreach ($reviews as $review)
+    {
+        echo "<blockquote class='review'>";
+        reviewItem("Автор", "author", $review->name);
+        reviewItem("E-Mail", "email", $review->email);
+        reviewItem("Рейтинг", "rating", (int) $review->rating);
+        reviewItem("Отзыв", "content", $review->content);
+        echo "</blockquote>";
+    }
 }
 ?>
 
