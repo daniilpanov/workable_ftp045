@@ -1,7 +1,5 @@
 <?php
 
-use app\helpers\Url;
-
 function echoRatingStars($number, $input_name, $selected = 1)
 {
     echo "<div class='rating-stars'>";
