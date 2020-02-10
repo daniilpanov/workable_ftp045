@@ -6,8 +6,6 @@ namespace app\factories;
 
 use app\BaseObj;
 use app\commands\DbCommands;
-use app\models\Model;
-use app\models\TableModel;
 use engine\base\GroupModel;
 
 class ModelsFactory extends MultiFactory

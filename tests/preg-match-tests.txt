@@ -1,0 +1,1 @@
+[frame class='row'][item class='col-md-4'][slider img='files/upload/images/carousel/2' type='jpg' quantity='5'][/item][/frame]

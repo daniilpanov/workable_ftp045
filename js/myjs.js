@@ -30,13 +30,13 @@ $(document).ready(function () {
         var el = $(this);
         var clickImg;
 
-        if (el.attr("aria-label"))
+        if (el.attr("aria-controls"))
         {
-            var label = el.attr("aria-label");
-            var div = $(".carousel[aria-label=" + label + "]");
-            var outer = $(".carousel[aria-label=" + label + "] .carousel-outer");
-            var inner = $(".carousel[aria-label=" + label + "] .carousel-inner");
-            var imgs = $(".carousel[aria-label=" + label + "] img");
+            var label = el.attr("aria-controls");
+            var div = $(".carousel[aria-controls=" + label + "]");
+            var outer = $(".carousel[aria-controls=" + label + "] .carousel-outer");
+            var inner = $(".carousel[aria-controls=" + label + "] .carousel-inner");
+            var imgs = $(".carousel[aria-controls=" + label + "] img");
 
             var widths = [];
             var heights = [];
@@ -74,14 +74,14 @@ $(document).ready(function () {
                 el.unbind("click");
                 $("body").css("overflow-y", "hidden");
 
-                var label = el.attr("aria-label");
-                var div = $(".carousel[aria-label=" + label + "]");
+                var label = el.attr("aria-controls");
+                var div = $(".carousel[aria-controls=" + label + "]");
 
-                $(".carousel[aria-label=" + label + "] .carousel-control-prev").click(function ()
+                $(".carousel[aria-controls=" + label + "] .carousel-control-prev").click(function ()
                 {
                     div.carousel("prev");
                 });
-                $(".carousel[aria-label=" + label + "] .carousel-control-next").click(function ()
+                $(".carousel[aria-controls=" + label + "] .carousel-control-next").click(function ()
                 {
                     div.carousel("next");
                 });
@@ -105,8 +105,8 @@ $(document).ready(function () {
                         {
                             div.removeClass("visible");
                             el.click(clickImg);
-                            $("body").css("overflow-y", "scroll");
-                            $("body").unbind("click");
+                            $("body").css("overflow-y", "scroll")
+                                .unbind("click");
                         }
                         else
                             closable = true;
@@ -121,7 +121,7 @@ $(document).ready(function () {
                 $("body").css("overflow-y", "hidden");
                 el.unbind("click");
                 $("<img src='" + el.prop("src") + "' class='zoomed' alt='Sorry, this image cannot be zoomed!'>")
-                    .appendTo("body").width(el.width() * 2.5).height(el.height() * 2.5)
+                    .appendTo("body").width(el.width() * 3).height(el.height() * 3)
                     .click(function ()
                            {
                                el.click(clickImg);

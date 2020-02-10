@@ -169,7 +169,7 @@
     <h2 class="h4" style="margin-top: 0; margin-bottom: 20px;">без элементов управления</h2>
 
     <!-- Bootstrap 4 -->
-    <div id="carousel" class="carousel slide center-block" data-ride="carousel" aria-label="2">
+    <div id="carousel" class="carousel slide center-block" data-ride="carousel" aria-label="2"">
         <table class="carousel-outer">
             <!-- Индикаторы -->
             <ol class="carousel-indicators">

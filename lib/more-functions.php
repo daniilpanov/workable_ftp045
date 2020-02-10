@@ -43,7 +43,7 @@ function require_class($namespace)
     load_file(
         str_replace("engine", "kernel", path_convert($namespace, "\\")),
         "ro",
-        "Requiring failed: class '$namespace' does not exist"
+        "error 404 - Requiring failed: class '$namespace' does not exist"
     );
 }
 
@@ -52,7 +52,7 @@ function show_view($view, $type = "action-views")
     load_file(
         "views/$type/$view",
         "i",
-        "Display failed: view '$view' with type '$type' does not exist"
+        "error 404 - Display failed: view '$view' with type '$type' does not exist"
     );
 }
 
@@ -61,7 +61,7 @@ function system_config($file)
     load_file(
         "config/$file",
         "ro",
-        "System config file init failed: config file '$file' does not exist"
+        "error 404 - System config file init failed: config file '$file' does not exist"
     );
 }
 
@@ -70,7 +70,7 @@ function include_lib($libname)
     load_file(
         "lib/$libname",
         "io",
-        "Lib including failed: library '$libname' does not exist"
+        "error 404 - Lib including failed: library '$libname' does not exist"
     );
 }
 

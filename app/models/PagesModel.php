@@ -68,4 +68,9 @@ class PagesModel extends \engine\base\TableModel
     {
         return "pages";
     }
+
+    public function insertBaseShortCodes($queue)
+    {
+        $this->content = $queue->go();
+    }
 }
