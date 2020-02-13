@@ -18,6 +18,7 @@ class SiteController extends Controller
 {
     private $lng = "ru";
     public $mail_sent = null;
+    public $reviews_page = 0;
 
     public function __construct()
     {
@@ -51,8 +52,8 @@ class SiteController extends Controller
          Гарантия качества, стильные и современные решения, потрясающий дизайн - вот то, что отличает нас
          от остальных производителей. Вы легко можете связаться с нами, оставить отзыв, или посмотреть наши статьи,
          которые могут помочь Вам при выборе продукции и дизайна";
-        K::get()->app()->keywords = "Главная, главная страница, panoff, design, дизайн, panoff-design, интерьер,
-        стильные, недорого, премиум, лучшее, лестницы, мебель";
+        K::get()->app()->keywords = "Главная panoff design, главная страница panoff design, panoff, design,
+        дизайн, panoff design, интерьер, стильное, недорого, премиум, лучшее, лестницы, мебель";
         K::get()->app()->title = "Главная страница";
 
         Render::render("home");
@@ -61,7 +62,7 @@ class SiteController extends Controller
     public function contacts()
     {
         K::get()->app()->description = "Наши контакты";
-        K::get()->app()->keywords = "panoff, panoff design, лестницы, design контакты, обратная связь, feedback";
+        K::get()->app()->keywords = "panoff, panoff design, лестницы, design контакты, обратная связь, feedback, дизайн";
         K::get()->app()->title = "Контакты";
 
         Render::render("contacts");
@@ -70,14 +71,15 @@ class SiteController extends Controller
     public function reviews()
     {
         K::get()->app()->description = "Отзывы о нашем сайте и о нашей продукции";
-        K::get()->app()->keywords = "panoff, panoff design, лестницы, design отзывы";
+        K::get()->app()->keywords = "panoff, panoff design, лестницы, design отзывы, panoff design отзывы,
+        отзывы о продукции panoff design";
         K::get()->app()->title = "Отзывы";
 
         $models = Factory::models()->addGroup(
             GroupModel::createGroupFromDB(
                 "reviews",
                 "ReviewsModel",
-                "*", ['limit' => [5]]
+                "*", ['limit' => [$this->reviews_page, 5]]
             )
         );
         Render::render("reviews", ['reviews' => $models]);

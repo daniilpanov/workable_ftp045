@@ -42,7 +42,7 @@ class Kernel
         // Boot
         system_config("boot");
 
-        show_view("main", "layouts");
+        show_view((@$_SESSION['user'] ? "admin" : "main"), "layouts");
     }
 
     public function registerEvent($requestEv)

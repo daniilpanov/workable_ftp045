@@ -34,11 +34,25 @@ $reg = (function ($builder) use ($Kernel)
 
 // Call to Kernel to method 'registerEvent' to set a request rule
 // GET
-$reg($get()->get("lng", "([a-z]+)")->method("lng"));
-$reg($get()->method("index"));
-$reg($get()->get("page", "reviews")->method("reviews"));
-$reg($get()->get("page", "contacts")->method("contacts"));
-$reg($get()->get("page", "([0-9]+)")->method("page"));
+if (!@$_SESSION['user'])
+{
+    $reg($get()->get("lng", "([a-z]+)")->method("lng"));
+    $reg($get()->method("index"));
+    $reg($get()->get("page", "reviews")->method("reviews"));
+    $reg($get()->get("page", "contacts")->method("contacts"));
+    $reg($get()->get("page", "([0-9]+)")->method("page"));
+}
+else
+{
+
+}
 // POST
-$reg($post()->model("Contacts")->post("contacts")->method("contactsSend"));
-$reg($post()->model("Review")->post("review")->method("reviewSend"));
+if (!@$_SESSION['user'])
+{
+    $reg($post()->model("Contacts")->post("contacts")->method("contactsSend"));
+    $reg($post()->model("Review")->post("review")->method("reviewSend"));
+}
+else
+{
+
+}

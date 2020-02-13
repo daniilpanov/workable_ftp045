@@ -14,6 +14,7 @@ K::get()->app()->title = $model->title;
 //
 $queue = new CodesQueueModel($model->content);
 //
+$queue->add(new CalcCodeModel());
 $queue->add(new FrameCodeWIModel());
 $queue->add(new FrameItemCodeWIModel());
 $queue->add(new SliderCodeModel());
