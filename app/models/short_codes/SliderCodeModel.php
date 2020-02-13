@@ -23,13 +23,13 @@ class SliderCodeModel extends ShortCodeModel
 
         $html = "<img src='$path_prefix.1.$type' alt='$alt' aria-controls='" . $this->label . "'>\n";
         //
-        $html .= "<div id=\"carousel\" class=\"carousel slide center-block\" data-ride=\"carousel\" aria-controls=\""
+        $html .= "<div id=\"carousel" . $this->label . "\" class=\"carousel slide center-block\" data-ride=\"carousel\" aria-controls=\""
             . $this->label
             . "\">
         <table class=\"carousel-outer\">
             <!-- Индикаторы -->
             <ol class=\"carousel-indicators\">
-                <li data-target=\"#carousel\" data-slide-to=\"0\" class=\"active\"></li>";
+                <li data-target=\"#carousel" . $this->label . "\" data-slide-to=\"0\" class=\"active\"></li>";
         //
         $slides_part = "<div class='carousel-item text-center active'>
         <img class='img-fluid no-zoom' src='$path_prefix.1.$type' alt='$alt'>
@@ -37,7 +37,7 @@ class SliderCodeModel extends ShortCodeModel
 
         for ($i = 1, $j = 2; $j <= $quantity; $i++, $j++)
         {
-            $html .= "<li data-target=\"#carousel\" data-slide-to=\"$i\"></li>";
+            $html .= "<li data-target=\"#carousel" . $this->label . "\" data-slide-to=\"$i\"></li>";
             $slides_part .= "<div class='carousel-item text-center'>
         <img class='img-fluid no-zoom' src='$path_prefix.$j.$type' alt='$alt'>
     </div>";
@@ -48,11 +48,11 @@ class SliderCodeModel extends ShortCodeModel
             . $slides_part
             . "</td>"
             . "<!-- Элементы управления -->
-            <a class=\"carousel-control-prev\" href=\"#carousel\" role=\"button\" data-slide=\"prev\">
+            <a class=\"carousel-control-prev\" href=\"#carousel" . $this->label . "\" role=\"button\" data-slide=\"prev\">
                 <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>
                 <span class=\"sr-only\">Предыдущий</span>
             </a>
-            <a class=\"carousel-control-next\" href=\"#carousel\" role=\"button\" data-slide=\"next\">
+            <a class=\"carousel-control-next\" href=\"#carousel" . $this->label . "\" role=\"button\" data-slide=\"next\">
                 <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>
                 <span class=\"sr-only\">Следующий</span>
             </a>
