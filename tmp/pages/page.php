@@ -1,4 +1,4 @@
-<img class="float-left" alt="Лестница" src="files/upload/images/for_2.1.png">
+<img class="float-left" alt="Лестница" src="../../files/upload/images/for_2.1.png">
 
 <p>
     <span class="excl blue">
@@ -30,25 +30,25 @@
     Фактически, двух ярусные детские <b>кровати с приставной лестницей</b> и являются таким вторым ярусом.
     Для детей такое спальное место декорируется под корабль или машину или сказочный город. Здесь фантазия дизайнера
     может разыграться в полной мере.
-<div class="frame row center">
-    <div class="frame-item col-md"><img src="files/upload/images/for_2.2.png" alt="Двухъярусная кровать"></div>
-    <div class="frame-item col-md"><img src="files/upload/images/for_2.3.png" alt=""></div>
+[frame class="row center"]
+    [frame-item class="col-md"]<img src="../../files/upload/images/for_2.2.png" alt="Двухъярусная кровать">[/frame-item]
+    [frame-item class="col-md"]<img src="../../files/upload/images/for_2.3.png" alt="">[/frame-item]
     <div class="w-100"></div>
-    <div class="frame-item col-md"><img src="files/upload/images/for_2.4.png" alt=""></div>
-    <div class="frame-item col-md"><img src="files/upload/images/for_2.5.png" alt=""></div>
-</div>
+    [frame-item class="col-md"]<img src="../../files/upload/images/for_2.4.png" alt="">[/frame-item]
+    [frame-item class="col-md"]<img src="../../files/upload/images/for_2.5.png" alt="">[/frame-item]
+[/frame]
 
 <p>
     Люди творческих профессий на втором ярусе обустраивают домашние мастерские или рабочие кабинеты.
     Это позволяет отвлечься от расслабленной домашней обстановки и сосредоточится на работе.
-<div class="frame row center">
-    <div class="frame-item col-md"><img src="files/upload/images/for_2.6.png" alt="Двухъярусная кровать"></div>
-    <div class="frame-item col-md"><img src="files/upload/images/for_2.7.png" alt=""></div>
-</div>
+[frame class="row center"]
+    [frame-item class="col-md"]<img src="../../files/upload/images/for_2.6.png" alt="Двухъярусная кровать">[/frame-item]
+    [frame-item class="col-md"]<img src="../../files/upload/images/for_2.7.png" alt="">[/frame-item]
+[/frame]
 
 <p></p>
 <p>
-    <img src="files/upload/images/for_2.8.png" alt="" class="float-left">
+    <img src="../../files/upload/images/for_2.8.png" alt="" class="float-left">
     Еще один функциональный способ использования второго яруса — обустройство домашней библиотеки.
     В частном доме она может быть солидной, с кожаными креслами в английском стиле.
     Книжные шкафы сплошной стеной до потолка. Лестница в классическом стиле с резным первым столбом
@@ -58,22 +58,22 @@
 
 <p></p>
 <p>
-    <img src="files/upload/images/for_2.10.png" alt="" class="float-left smarg">
-    <img src="files/upload/images/for_2.9.png" alt="" class="float-right smarg">
+    <img src="../../files/upload/images/for_2.10.png" alt="" class="float-left smarg">
+    <img src="../../files/upload/images/for_2.9.png" alt="" class="float-right smarg">
 <p>
     Второй ярус может занимать весь периметр комнаты или холла частного дома.
     Так наверху будет место для нескольких функциональных зон.
 <p>
 </p>
 
-<div class="row frame center">
-    <div class="frame-item col-md"><img src="files/upload/images/for_2.11.png" alt=""></div>
-    <div class="frame-item col-md"><img src="files/upload/images/for_2.12.png" alt=""></div>
-    <div class="frame-item col-md"><img src="files/upload/images/for_2.13.png" alt=""></div>
+[frame class="row center"]
+    [frame-item class="col-md"]<img src="../../files/upload/images/for_2.11.png" alt="">[/frame-item]
+    [frame-item class="col-md"]<img src="../../files/upload/images/for_2.12.png" alt="">[/frame-item]
+    [frame-item class="col-md"]<img src="../../files/upload/images/for_2.13.png" alt="">[/frame-item]
     <div class="w-100"></div>
-    <div class="frame-item col-md"><img src="files/upload/images/for_2.14.png" alt=""></div>
-    <div class="frame-item col-md"><img src="files/upload/images/for_2.15.png" alt=""></div>
-</div>
+    [frame-item class="col-md"]<img src="../../files/upload/images/for_2.14.png" alt="">[/frame-item]
+    [frame-item class="col-md"]<img src="../../files/upload/images/for_2.15.png" alt="">[/frame-item]
+[/frame]
 
 <p>
     Уникальный дизайн антресоли передают с помощью <b>балюстрады (ограждения балкона)</b> и лестницы.
@@ -89,13 +89,13 @@
     На них полноценно может уместиться лишь ступня одной ноги.
     Подходит для установки в ограниченном пространстве.
     Так же часто используют винтовые лестницы. Такая лестница, чем у нее больше радиус, тем комфортней подъем.
-<div class="row frame center">
-    <div class="frame-item col-md"><img src="files/upload/images/for_2.16.png" alt=""></div>
-    <div class="frame-item col-md"><img src="files/upload/images/for_2.17.png" alt=""></div>
-</div>
+[frame class="row center"]
+    [frame-item class="col-md"]<img src="../../files/upload/images/for_2.16.png" alt="">[/frame-item]
+    [frame-item class="col-md"]<img src="../../files/upload/images/for_2.17.png" alt="">[/frame-item]
+[/frame]
 
 <p></p>
-<img src="files/upload/images/for_2.18.png" class="float-left" alt="">
+<img src="../../files/upload/images/for_2.18.png" class="float-left" alt="">
 <p>
     Популярны функциональные перегородки в виде открытого стеллажа или книжной полки.
     С одной стороны они закрывают уровень от посторонних глаз, а с другой — служат дополнительным местом хранения.
@@ -105,10 +105,10 @@
     Например, там можно расположить шкаф или выдвижные ящики.
 
 <p></p>
-<div class="row center frame">
-    <div class="frame-item col-md"><img src="files/upload/images/for_2.19.png" alt=""></div>
-    <div class="frame-item col-md"><img src="files/upload/images/for_2.20.png" alt=""></div>
-</div>
+[frame class="row center"]
+    [frame-item class="col-md"]<img src="../../files/upload/images/for_2.19.png" alt="">[/frame-item]
+    [frame-item class="col-md"]<img src="../../files/upload/images/for_2.20.png" alt="">[/frame-item]
+[/frame]
 <p>
     Из нашего краткого обзора легко понять охват дизайнерских идей
     в области обустройства дополнительного уровня в помещении.
@@ -135,8 +135,8 @@
     который учитывает все Ваши пожелания.
 
 <p></p>
-<div class="row center frame">
-    <div class="frame-item col-md"><img src="files/upload/images/for_2.21.png" alt=""></div>
-    <div class="frame-item col-md"><img src="files/upload/images/for_2.22.png" alt=""></div>
-    <div class="frame-item col-md"><img src="files/upload/images/for_2.23.png" alt=""></div>
-</div>
+[frame class="row center"]
+    [frame-item class="col-md"]<img src="../../files/upload/images/for_2.21.png" alt="">[/frame-item]
+    [frame-item class="col-md"]<img src="../../files/upload/images/for_2.22.png" alt="">[/frame-item]
+    [frame-item class="col-md"]<img src="../../files/upload/images/for_2.23.png" alt="">[/frame-item]
+[/frame]

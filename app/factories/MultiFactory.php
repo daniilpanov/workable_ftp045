@@ -18,14 +18,14 @@ class MultiFactory extends BaseObj
         self::$providing = ($providing === true);
     }
 
-    protected function create($class, $params = [], $object_key = null, $save = true, $group = null)
+    protected function create($clazz, $params = [], $object_key = null, $save = true, $group = null)
     {
         if ($object_key === null)
-            $object_key = $class;
+            $object_key = $clazz;
 
         return ($save
-            ? $this->register(new $class(...array_values($params)), $object_key, $group)
-            : new $class(...array_values($params)));
+            ? $this->register(new $clazz(...array_values($params)), $object_key, $group)
+            : new $clazz(...array_values($params)));
     }
 
     protected function register($obj, $key, $group = null)

@@ -17,9 +17,9 @@ class FrameCodeWIModel extends ShortCodeWithInnerModel
         $arguments = isset($params['args']) ? $params['args'] : [];
         $content = isset($params['content']) ? $params['content'] : "";
 
-        $class = "frame " . (isset($arguments['class']) ? $arguments['class'] : "");
+        $clazz = "frame " . (isset($arguments['class']) ? $arguments['class'] : "");
 
-        $html = "<div class='$class'>$content</div>";
+        $html = "<div class='$clazz'>$content</div>";
 
         return $html;
     }

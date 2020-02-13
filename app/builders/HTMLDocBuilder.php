@@ -135,11 +135,11 @@ class HTMLDocBuilder extends Builder
         return $this;
     }
     
-    public function header($content, $class = null, $id = null)
+    public function header($content, $clazz = null, $id = null)
     {
         $tag = ['name' => "header", 'root' => $this->root_tag, 'content' => $content, 'closed' => true];
-        if ($class !== null)
-            $tag['attr']['class'] = $class;
+        if ($clazz !== null)
+            $tag['attr']['class'] = $clazz;
         if ($id !== null)
             $tag['attr']['id'] = $id;
         $this->tags[] = $tag;
@@ -147,11 +147,11 @@ class HTMLDocBuilder extends Builder
         return $this;
     }
 
-    public function main($content, $class = null, $id = null)
+    public function main($content, $clazz = null, $id = null)
     {
         $tag = ['name' => "main", 'root' => $this->root_tag, 'content' => $content, 'closed' => true];
-        if ($class !== null)
-            $tag['attr']['class'] = $class;
+        if ($clazz !== null)
+            $tag['attr']['class'] = $clazz;
         if ($id !== null)
             $tag['attr']['id'] = $id;
         $this->tags[] = $tag;
@@ -159,11 +159,11 @@ class HTMLDocBuilder extends Builder
         return $this;
     }
 
-    public function footer($content, $class = null, $id = null)
+    public function footer($content, $clazz = null, $id = null)
     {
         $tag = ['name' => "footer", 'root' => $this->root_tag, 'content' => $content, 'closed' => true];
-        if ($class !== null)
-            $tag['attr']['class'] = $class;
+        if ($clazz !== null)
+            $tag['attr']['class'] = $clazz;
         if ($id !== null)
             $tag['attr']['id'] = $id;
         $this->tags[] = $tag;

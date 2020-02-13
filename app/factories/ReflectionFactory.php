@@ -6,13 +6,13 @@ namespace app\factories;
 
 class ReflectionFactory extends SingletonFactory
 {
-    public function getRef($class)
+    public function getRef($clazz)
     {
-        return $this->get($class, "\ReflectionClass", [$class]);
+        return $this->get($clazz, "\ReflectionClass", [$clazz]);
     }
 
-    public function createWithoutConstruct($class)
+    public function createWithoutConstruct($clazz)
     {
-        return $this->getRef($class)->newInstanceWithoutConstructor();
+        return $this->getRef($clazz)->newInstanceWithoutConstructor();
     }
 }
