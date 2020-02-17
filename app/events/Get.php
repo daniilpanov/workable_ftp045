@@ -4,7 +4,7 @@
 namespace app\events;
 
 
-class GetEv extends RequestEv
+class Get extends Request
 {
     public $get;
 

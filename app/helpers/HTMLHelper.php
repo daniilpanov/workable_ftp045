@@ -5,16 +5,16 @@ namespace app\helpers;
 
 
 use app\factories\Factory;
-use app\builders\HTMLDocBuilder;
+use app\models\HTMLDoc;
 
 class HTMLHelper extends Helper
 {
-    /** @var $html_model HTMLDocBuilder|null */
+    /** @var $html_model HTMLDoc|null */
     private static $html_model = null;
 
     public static function begin($title, $lng)
     {
-        return self::$html_model = Factory::builders()->createBuilder("HTMLDoc", $title, $lng);
+        return self::$html_model = Factory::models()->createModel("HTMLDoc", [$title, $lng]);
     }
 
     public static function head()

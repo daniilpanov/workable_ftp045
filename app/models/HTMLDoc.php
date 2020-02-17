@@ -1,10 +1,12 @@
 <?php
 
 
-namespace app\builders;
+namespace app\models;
 
 
-class HTMLDocBuilder extends Builder
+use engine\base\Model as Model;
+
+class HTMLDoc extends Model
 {
     public $lang;
     public $title;
@@ -25,7 +27,7 @@ class HTMLDocBuilder extends Builder
             'attr' => [], 'closed' => true,
             'content' => $title
         ];
-        
+
         $this->root_tag = "html";
     }
 
@@ -59,7 +61,7 @@ class HTMLDocBuilder extends Builder
     {
         $another_attr['href'] = $href;
         $tag = ['name' => "link", 'root' => $this->root_tag, 'attr' => $another_attr, 'closed' => false];
-        
+
         if ($rel !== null)
             $tag['attr']['rel'] = $rel;
         if ($type !== null)
@@ -134,7 +136,7 @@ class HTMLDocBuilder extends Builder
         $this->body_class = $body_class;
         return $this;
     }
-    
+
     public function header($content, $clazz = null, $id = null)
     {
         $tag = ['name' => "header", 'root' => $this->root_tag, 'content' => $content, 'closed' => true];
@@ -143,7 +145,7 @@ class HTMLDocBuilder extends Builder
         if ($id !== null)
             $tag['attr']['id'] = $id;
         $this->tags[] = $tag;
-        
+
         return $this;
     }
 

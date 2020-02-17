@@ -4,19 +4,33 @@
 namespace app\helpers;
 
 
-use app\builders\InsertQueryBuilder;
-use app\builders\SelectQueryBuilder;
-use app\factories\Factory;
+use engine\app\db\InsertQueryBuilder;
+use engine\app\db\SelectQueryBuilder;
+use engine\app\db\UpdateQueryBuilder;
 
 class Queries extends Helper
 {
+    /**
+     * @return SelectQueryBuilder
+     */
     public static function select()
     {
-        return Factory::builders()->createBuilder("SelectQuery");
+        return new SelectQueryBuilder();
     }
 
+    /**
+     * @return InsertQueryBuilder
+     */
     public static function insert()
     {
-        return Factory::builders()->createBuilder("InsertQuery");
+        return new InsertQueryBuilder();
+    }
+
+    /**
+     * @return UpdateQueryBuilder
+     */
+    public static function update()
+    {
+        return new UpdateQueryBuilder();
     }
 }

@@ -5,7 +5,6 @@ namespace app\factories;
 
 
 use app\BaseObj;
-use app\commands\DbCommands;
 use engine\base\GroupModel;
 
 class ModelsFactory extends MultiFactory
@@ -23,11 +22,10 @@ class ModelsFactory extends MultiFactory
      * @param $model_name
      * @param array $params
      * @param bool $register
-     * @return \app\BaseObj|\app\ProvidingObj|bool
+     * @return \app\BaseObj|bool
      */
     public function createModel($model_name, $params = [], $register = true)
     {
-        $model_name .= "Model";
         $model = "app\\models\\$model_name";
         $instance = new $model(...$params);
 
@@ -44,11 +42,10 @@ class ModelsFactory extends MultiFactory
      * @param array $params
      * @param null $group
      * @param bool $register
-     * @return \app\BaseObj|\app\ProvidingObj
+     * @return \app\BaseObj
      */
     public function createIfNotExists($model_name, $params = [], $group = null, $register = true)
     {
-        $model_name .= "Model";
         $model = "app\\models\\$model_name";
 
         if (!$model_obj = $this->searchModel($model_name, $params, $group, true))
@@ -66,8 +63,6 @@ class ModelsFactory extends MultiFactory
      */
     public function searchModel($model_name, $params = [], $group = 'default', $only_one = false)
     {
-        $model_name .= "Model";
-
         return (isset($this->groups[$group])
             ? $this->groups[$group]->search($params, $model_name, $only_one)
             : false);

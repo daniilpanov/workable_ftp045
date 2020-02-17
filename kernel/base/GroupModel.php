@@ -4,11 +4,10 @@
 namespace engine\base;
 
 
-use app\builders\SelectQueryBuilder;
-use app\commands\DbCommands;
+use engine\app\db\SelectQueryBuilder;
 use app\helpers\Queries;
 
-class GroupModel extends BaseObjModel
+class GroupModel extends Model
 {
     public $id;
     public $models = [];
@@ -46,7 +45,7 @@ class GroupModel extends BaseObjModel
         $group->strict_classname = $modelname;
 
         $model = "\\app\\models\\$modelname";
-        /** @var $model TableModel */
+        /** @var $model TableRecord */
         $model = new $model();
         $methods = get_class_methods($model);
 
@@ -117,7 +116,7 @@ class GroupModel extends BaseObjModel
 
         $SQLData = $sql->getSqlInfo();
 
-        $data = DbCommands::query($SQLData['sql'], $SQLData['templates'])->fetchAll();
+        $data = db()->query($SQLData['sql'], $SQLData['templates'])->fetchAll();
 
         if ($data)
         {

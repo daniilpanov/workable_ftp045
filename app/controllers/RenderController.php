@@ -1,18 +1,19 @@
 <?php
 
 
-namespace app\commands;
+namespace app\controllers;
 
 
 use app\factories\Factory;
-use app\models\ViewModel;
+use app\models\View;
+use engine\base\Controller;
 
-class RenderCommands extends Command
+class RenderController extends Controller
 {
-    /** @var $renders ViewModel[][] */
+    /** @var $renders View[][] */
     private $renders = [];
 
-    public function renderC($view, $data = [], $type = "action-views")
+    public function render($view, $data = [], $type = "action-views")
     {
         $model = Factory::models()->createIfNotExists("View", ['view_name' => $view]);
 
@@ -27,7 +28,7 @@ class RenderCommands extends Command
         $this->renders[] = ['model' => $model, 'data' => $new_data, 'type' => $type];
     }
 
-    public function makeVisibleC()
+    public function makeVisible()
     {
         foreach ($this->renders as $render)
         {

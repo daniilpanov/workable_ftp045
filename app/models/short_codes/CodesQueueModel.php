@@ -4,7 +4,7 @@
 namespace app\models\short_codes;
 
 
-use app\models\Model;
+use engine\base\Model;
 
 class CodesQueueModel extends Model
 {

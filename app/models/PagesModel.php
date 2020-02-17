@@ -5,19 +5,18 @@ namespace app\models;
 
 
 use app\helpers\Queries;
-use app\helpers\Url;
 use engine\root\Kernel;
 
-class PagesModel extends \engine\base\TableModel
+class PagesModel extends \engine\base\TableRecord
 {
-    public $id, $parent, $name, $content,
+    public $parent, $name, $content,
         $language, $keywords,
         $description, $position, $title, $is_link, $page_exists;
 
-    public function fromDB($id)
+    public function fromDB()
     {
         $this->setData(Queries::select()
-            ->from("pages")->where("id", intval($id))
+            ->from("pages")->where("id", intval($this->id))
             ->query(true, false));
 
         $this->page_exists = isset($this->id);
@@ -27,7 +26,7 @@ class PagesModel extends \engine\base\TableModel
             if (!is_v3())
                 $this->content = str_replace('src="files/', 'src="v3/files/', $this->content);
             $app = Kernel::get()->app();
-            $app->page = $id;
+            $app->page = $this->id;
             $app->keywords = $this->keywords;
             $app->description = $this->description;
             $app->title = $this->title;

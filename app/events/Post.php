@@ -5,7 +5,7 @@ namespace app\events;
 
 use app\factories\Factory;
 
-class PostEv extends RequestEv
+class Post extends Request
 {
     public $postKey, $model;
 

@@ -3,17 +3,22 @@
 /** @var $Kernel \engine\root\Kernel */
 global $Kernel;
 
-use app\builders\GetEvBuilder as Get;
-use app\builders\PostEvBuilder as Post;
-use app\controllers\SiteController;
+//
+use app\helpers\GetRouting as Get;
+use app\helpers\PostRouting as Post;
+use app\controllers\AdminActionsController;
+use app\controllers\GuestActionsController;
 
-Get::$default_controller = SiteController::class;
-Post::$default_controller = SiteController::class;
+//
+Get::$default_controller =
+    Post::$default_controller =
+        (!@$_SESSION['user'])
+            ? GuestActionsController::class
+            : AdminActionsController::class;
 
-/** @var $get_builder Get */
-$get_builder = factory("builders")->createBuilder("GetEv");
-/** @var $post_builder Post */
-$post_builder = factory("builders")->createBuilder("PostEv");
+//
+$get_builder = new Get();
+$post_builder = new Post();
 
 //
 //
@@ -33,7 +38,18 @@ $reg = (function ($builder) use ($Kernel)
 });
 
 // Call to Kernel to method 'registerEvent' to set a request rule
-// GET
+// GUEST URL
+if (!@$_SESSION['user'])
+{
+
+}
+// ADMIN URL
+else
+{
+
+}
+
+// GUEST GET
 if (!@$_SESSION['user'])
 {
     $reg($get()->get("lng", "([a-z]+)")->method("lng"));
@@ -42,16 +58,18 @@ if (!@$_SESSION['user'])
     $reg($get()->get("page", "contacts")->method("contacts"));
     $reg($get()->get("page", "([0-9]+)")->method("page"));
 }
+// ADMIN GET
 else
 {
 
 }
-// POST
+// GUEST POST
 if (!@$_SESSION['user'])
 {
     $reg($post()->model("Contacts")->post("contacts")->method("contactsSend"));
     $reg($post()->model("Review")->post("review")->method("reviewSend"));
 }
+// ADMIN POST
 else
 {
 

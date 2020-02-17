@@ -23,8 +23,6 @@ class EventKernel
 
     public function run($events_name)
     {
-        $events_name .= "Ev";
-
         /** @var $instances Event[] */
         if ($instances = Factory::events()->getAllEvents($events_name))
         {
@@ -39,8 +37,6 @@ class EventKernel
 
     public function runBy($events_name, $params)
     {
-        $events_name .= "Ev";
-
         /** @var $instances SafetyEvent[] */
         if ($instances = Factory::events()->getAllEvents($events_name))
         {

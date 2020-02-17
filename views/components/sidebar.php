@@ -18,7 +18,7 @@ function printImgs($models, $top = false)
         $i++;
     }
 
-    echo ($top) ? "<i class='red'>Мы предлагаем <wbr>различные стилевые решения.</i></div>" : "";
+    echo ($top) ? "<i class='red'>Мы предлагаем различные стилевые решения.</i></div>" : "";
     echo "</div>";
 }
 
@@ -31,16 +31,16 @@ if (!$factory_models->searchModel("Constants", [], "const", true))
         \engine\base\GroupModel
             ::createGroupFromDB(
                 "const",
-                "ConstantsModel",
+                "Constants",
                 "*", ['where' => [[]]]
             )
     );
     //createSomeModels("Constants", ['name' => []], '*', "const");
 }
 
-/** @var $top_products \app\models\ConstantsModel[] */
+/** @var $top_products \app\models\Constants[] */
 $top_products = $factory_models->searchModel("Constants", ['name' => "top-products"], "const");
-/** @var $sidebar_img \app\models\ConstantsModel[] */
+/** @var $sidebar_img \app\models\Constants[] */
 $sidebar_img = $factory_models->searchModel("Constants", ['name' => "sidebar-img"], "const");
 
 //

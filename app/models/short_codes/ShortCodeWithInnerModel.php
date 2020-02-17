@@ -4,8 +4,7 @@
 namespace app\models\short_codes;
 
 
-
-use app\models\Model;
+use engine\base\Model;
 
 abstract class ShortCodeWithInnerModel extends Model implements ShortCodeModelBase
 {

@@ -4,7 +4,7 @@
 namespace engine\base;
 
 
-abstract class BaseObjModel extends BaseObj
+abstract class Model extends BaseObj
 {
     public function setData($data)
     {

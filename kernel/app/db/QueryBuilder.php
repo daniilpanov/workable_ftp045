@@ -1,13 +1,15 @@
 <?php
 
 
-namespace app\builders;
+namespace engine\app\db;
 
 
 use app\commands\DbCommands;
+use engine\base\BaseObj;
 
-abstract class QueryBuilder extends Builder
+abstract class QueryBuilder extends BaseObj
 {
+    protected $initialized = false;
     protected $sql;
     protected $templates = [];
 
@@ -35,7 +37,7 @@ abstract class QueryBuilder extends Builder
 
     public function query($fetch = true, $all = true)
     {
-        $res = DbCommands::query(
+        $res = db()->query(
             $this->getSql(),
             ($this->templates ? $this->templates : null)
         );
@@ -47,4 +49,6 @@ abstract class QueryBuilder extends Builder
 
         return $res;
     }
+
+    abstract public function init();
 }

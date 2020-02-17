@@ -1,6 +1,24 @@
 <?php
 
-use app\commands\DbCommands;
+//
+function pagesSort($id = 0)
+{
+    $result = [];
+    $pages = \app\factories\Factory::models()->searchModel("PagesModel", ['parent' => $id], "menu");
+
+    if ($pages)
+    {
+        foreach ($pages as $item)
+        {
+            if ($tmp = pagesSort($item->id))
+                $result[] = ['parent' => $item, 'submenu' => $tmp];
+            else
+                $result[] = $item;
+        }
+    }
+
+    return $result;
+}
 
 //
 function tagA($id, $name)
@@ -52,7 +70,7 @@ function dropdownMenu($menu, $first_level = true)
 }
 
 //
-$links = DbCommands::pagesSort();
+$links = pagesSort();
 ?>
 <!-- Top Menu -->
 <nav id="menu" class="navbar navbar-expand-md">
@@ -107,7 +125,7 @@ $links = DbCommands::pagesSort();
     <div class="col-md-8" id="content">
         <?php
         //
-        \app\commands\RenderCommands::makeVisible();
+        controller("Render")->makeVisible();
         ?>
     </div>
 </div>

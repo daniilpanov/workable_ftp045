@@ -3,7 +3,7 @@
 namespace app\events;
 
 
-class UrlEv extends RequestEv
+class Url extends Request
 {
     public $url;
 
@@ -14,7 +14,7 @@ class UrlEv extends RequestEv
         $this->url = $url;
     }
 
-    public function preInit($params): bool
+    public function preInit($params)
     {
         if (!isset($params['url']))
             return false;

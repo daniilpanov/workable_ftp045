@@ -4,10 +4,10 @@
 namespace app\models;
 
 
-use engine\base\TableModel as TM;
+use engine\base\TableRecord as TR;
 use app\helpers\Queries;
 
-class ConstantsModel extends TM
+class Constants extends TR
 {
     public $id, $name, $value, $translate;
 

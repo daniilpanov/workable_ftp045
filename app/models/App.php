@@ -4,7 +4,9 @@
 namespace app\models;
 
 
-class AppModel extends Model
+use engine\base\Model;
+
+class App extends Model
 {
     public $language = "ru",
         $page = "index",

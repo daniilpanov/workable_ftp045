@@ -4,16 +4,14 @@
 namespace engine\root;
 
 
-use app\commands\DbCommands;
-use app\commands\RouterCommands;
 use app\factories\Factory;
 use app\helpers\Url;
-use app\models\AppModel;
+use app\models\App;
 use engine\baseOf\EventKernel;
 
 class Kernel
 {
-    /** @var $app AppModel|null */
+    /** @var $app App|null */
     private $app = null;
 
     public function app()
@@ -52,17 +50,17 @@ class Kernel
 
     public function bootUrl($url)
     {
-        Url::init(Factory::models()->createModel("Url", [$url]));
+        Url::init(Factory::models()->createModel("UrlModel", [$url]));
     }
 
     public function bootDatabase($host, $dbname, $user, $pass = null, $charset = "utf8")
     {
-        DbCommands::init($host, $dbname, $user, $pass, $charset);
+        dbInit($host, $dbname, $user, $pass, $charset);
     }
 
     // Routing
     public function bootRouter()
     {
-        RouterCommands::route();
+        controller("Router")->route();
     }
 }

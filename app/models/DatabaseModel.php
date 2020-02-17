@@ -4,6 +4,7 @@
 namespace app\models;
 
 
+use engine\base\Model;
 use PDO;
 
 class DatabaseModel extends Model
@@ -18,7 +19,7 @@ class DatabaseModel extends Model
 
     public function __construct($host, $db, $user, $pass = null, $charset = "utf8")
     {
-        self::setData($this, func_get_args());
+        $this->setData(func_get_args());
 
         try
         {
@@ -35,6 +36,30 @@ class DatabaseModel extends Model
         {
             $this->pdo = false;
             // Logging
+        }
+
+        $this->query("SET NAMES :charset", ['charset' => $charset]);
+    }
+
+    public function query($sql, $templates = null)
+    {
+        try
+        {
+            if (is_array($templates))
+            {
+                $sth = $this->pdo->prepare($sql);
+                if (!$sth->execute($templates))
+                    return false;
+                return $sth;
+            }
+            else
+                return $this->pdo->query($sql);
+        }
+        catch (\PDOException $exception)
+        {
+            echo $exception->getMessage();
+            return false;
+            // And logging before returning
         }
     }
 }

@@ -4,7 +4,9 @@
 namespace app\models;
 
 
-class ViewModel extends Model
+use engine\base\Model;
+
+class View extends Model
 {
     public $view_name;
     

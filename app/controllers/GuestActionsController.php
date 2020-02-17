@@ -3,7 +3,6 @@
 
 namespace app\controllers;
 
-use app\commands\RenderCommands as Render;
 use app\factories\Factory;
 use app\helpers\MailHelper;
 use app\models\ContactsModel;
@@ -14,7 +13,7 @@ use engine\base\Controller;
 use engine\base\GroupModel;
 use engine\root\Kernel as K;
 
-class SiteController extends Controller
+class GuestActionsController extends Controller
 {
     private $lng = "ru";
     public $mail_sent = null;
@@ -23,11 +22,6 @@ class SiteController extends Controller
     public function __construct()
     {
         $this->lng = isset($_COOKIE['lng']) ? $_COOKIE['lng'] : "ru";
-    }
-    
-    public function anAction()
-    {
-        
     }
 
     public function lng($lng)
@@ -39,11 +33,12 @@ class SiteController extends Controller
     {
         //Render::render("debug", ['var2' => $page], "components");
         /** @var $model PagesModel */
-        $model = Factory::models()->createModel("Pages");
-        $model->fromDB($page);
+        $model = Factory::models()->createModel("PagesModel");
+        $model->id = $page;
+        $model->fromDB();
 
         if ($model->page_exists)
-            Render::render("page", ['model' => $model]);
+            controller("Render")->render("page", ['model' => $model]);
     }
 
     public function index()
@@ -56,7 +51,7 @@ class SiteController extends Controller
         дизайн, panoff design, интерьер, стильное, недорого, премиум, лучшее, лестницы, мебель";
         K::get()->app()->title = "Главная страница";
 
-        Render::render("home");
+        controller("Render")->render("home");
     }
 
     public function contacts()
@@ -65,7 +60,7 @@ class SiteController extends Controller
         K::get()->app()->keywords = "panoff, panoff design, лестницы, design контакты, обратная связь, feedback, дизайн";
         K::get()->app()->title = "Контакты";
 
-        Render::render("contacts");
+        controller("Render")->render("contacts");
     }
 
     public function reviews()
@@ -82,7 +77,7 @@ class SiteController extends Controller
                 "*", ['limit' => [$this->reviews_page, 5]]
             )
         );
-        Render::render("reviews", ['reviews' => $models]);
+        controller("Render")->render("reviews", ['reviews' => $models]);
     }
 
     public function contactsSend(ContactsModel $model)

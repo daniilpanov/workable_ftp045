@@ -1,7 +1,7 @@
 <?php
 
 
-namespace app\builders;
+namespace engine\app\db;
 
 
 class InsertQueryBuilder extends QueryBuilder

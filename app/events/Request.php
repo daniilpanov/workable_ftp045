@@ -4,7 +4,7 @@
 namespace app\events;
 
 
-abstract class RequestEv extends SafetyEvent
+abstract class Request extends SafetyEvent
 {
     public function __construct($controller, $method = null)
     {

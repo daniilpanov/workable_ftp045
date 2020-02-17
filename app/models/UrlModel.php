@@ -4,6 +4,8 @@
 namespace app\models;
 
 
+use engine\base\Model;
+
 class UrlModel extends Model
 {
     public $full_url;
