@@ -2,6 +2,12 @@
 
 mb_internal_encoding("UTF-8");
 
+/*foreach ($_COOKIE as $index => $item)
+{
+    if ($index != "PHPSESSID")
+        setcookie($index, "", -1000000);
+}*/
+
 /** @var $Kernel \engine\root\Kernel */
 global $Kernel;
 
@@ -9,8 +15,7 @@ global $Kernel;
 include_lib("helpers");
 // Booting
 $Kernel->bootUrl(getUrl());
-$Kernel->bootDatabase("localhost", "z159472_pn11", "php", "12345");
-//$Kernel->bootDatabase("mysqlserver", "z159472_pn11", "z159472_pn11", "Nikolay4664P");
+$Kernel->bootDatabase("mysqlserver", "z159472_pn11", "z159472_pn11", "Nikolay4664P");
 // и настройки роутера (с помощью регистрации событий)
 system_config("router-setup");
 // Старт роутинга

@@ -70,14 +70,15 @@ class GuestActionsController extends Controller
         отзывы о продукции panoff design";
         K::get()->app()->title = "Отзывы";
 
-        $models = Factory::models()->addGroup(
-            GroupModel::createGroupFromDB(
+        Factory::models()->addGroup(
+            $models = GroupModel::createGroupFromDB(
                 "reviews",
                 "ReviewsModel",
-                "*", ['limit' => [$this->reviews_page, 5]]
+                "*"
             )
         );
-        controller("Render")->render("reviews", ['reviews' => $models]);
+
+        controller("Render")->render("reviews", ['reviews' => $models->models['ReviewsModel']]);
     }
 
     public function contactsSend(ContactsModel $model)

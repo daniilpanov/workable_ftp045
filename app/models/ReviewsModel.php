@@ -6,28 +6,23 @@ namespace app\models;
 
 use app\helpers\Queries;
 
-class ReviewsModel extends \engine\base\TableModel
+class ReviewsModel extends \engine\base\TableRecord
 {
-    public $id, $name, $email, $rating, $content;
+    public $name, $email, $rating, $content, $created, $mods;
 
     public static function getKeyCols()
     {
-        return ['limit'];
+        return [];
     }
 
     public static function getMultiQuery($params, $items = "*")
     {
         return Queries::select()->selectString($items)
-            ->from("reviews")->limit($params['limit'])->getSqlInfo();
+            ->from("reviews")->order("created", "desc")->getSqlInfo();
     }
 
     public function getTable()
     {
         return "reviews";
-    }
-
-    public function limit($limit)
-    {
-        return [$limit];
     }
 }

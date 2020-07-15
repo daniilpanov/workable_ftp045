@@ -26,6 +26,7 @@ HTML::head()
     ->link((is_v3() ? "" : "v3/") . "files/browser/favicon.png", "icon", "image/x-icon")
     // JS Scripts
     ->script((is_v3() ? "" : "v3/") . "js/jquery.min.js")
+    ->script((is_v3() ? "" : "v3/") . "js/jquery-cookie.js")
     //->script((is_v3() ? "" : "v3/") . "js/bootstrap/bootstrap.bundle.min.js")
     ->script((is_v3() ? "" : "v3/") . "js/bootstrap/bootstrap.min.js")
     //->script("https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/esm/popper.min.js")

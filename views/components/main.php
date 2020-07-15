@@ -84,9 +84,9 @@ $links = pagesSort();
     <div class="collapse navbar-collapse" id="menu-links">
         <ul class="navbar-nav mr-auto">
             <?php
-            tagA(null, "home");
-            tagA("contacts", "contacts");
-            tagA("reviews", "reviews");
+            tagA(null, "главаная страница");
+            tagA("contacts", "контакты");
+            tagA("reviews", "отзывы");
 
             foreach ($links as $link)
             {
@@ -114,7 +114,7 @@ $links = pagesSort();
 
 <div class="row" id="after-menu">
     <!-- Sidebar -->
-    <div class="col-md-4 sidebar">
+    <div class="col-4 sidebar">
         <?php
         //
         show_view("sidebar", "components");
@@ -122,7 +122,7 @@ $links = pagesSort();
     </div>
 
     <!-- Content -->
-    <div class="col-md-8" id="content">
+    <div class="col-8" id="content">
         <?php
         //
         controller("Render")->makeVisible();

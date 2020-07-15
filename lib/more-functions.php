@@ -1,19 +1,22 @@
 <?php
 
-function echoRatingStars($number, $input_name, $selected = 1)
+function echoRatingStars($number, $input_name, $selected = 5, $disabled = false)
 {
-    echo "<div class='rating-stars'>";
+    $html = "<div class='rating-stars'>";
 
     for ($i = 1; $i <= $number; $i++)
     {
-        echo "<label class='star"
+        $html .= "<label class='star"
             . ($i == $selected ? " star-selected" : "")
             . "'><input type='radio' name='$input_name' value='$i'"
             . ($i == $selected ? " checked" : "")
+            . ($disabled ? " disabled" : "")
             . "></label>";
     }
 
-    echo "</div>";
+    $html .= "</div>";
+
+    return $html;
 }
 
 function is_image($filename)

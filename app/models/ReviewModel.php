@@ -6,21 +6,23 @@ namespace app\models;
 
 use app\helpers\Queries;
 
-class ReviewModel extends Model
+class ReviewModel extends \engine\base\Model
 {
-    public $name, $email, $rating, $content;
+    public $name, $email, $rating, $content, $created, $mods = null;
 
     public function __construct($data)
     {
         unset($data['review']);
+        $this->setData($data);
 
-        self::setData($this, $data);
+        $this->created = time();
     }
 
     public function save()
     {
         Queries::insert()->table("reviews")
-            ->col("name")->col("email")->col("rating")->col("content")
-            ->val($this->name)->val($this->email)->val($this->rating)->val($this->content)->query(false);
+            ->col("name")->col("email")->col("rating")->col("content")->col("created")
+            ->val($this->name)->val($this->email)->val($this->rating)->val($this->content)->val($this->created)
+            ->query(false);
     }
 }

@@ -4,7 +4,7 @@
 namespace app\models;
 
 
-class ContactsModel extends Model
+class ContactsModel extends \engine\base\Model
 {
     public $company, $email, $subject, $message;
 
@@ -12,6 +12,6 @@ class ContactsModel extends Model
     {
         unset($data['contacts']);
 
-        self::setData($this, $data);
+        $this->setData($data);
     }
 }

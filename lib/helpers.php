@@ -1,6 +1,8 @@
 <?php
 
 //
+use app\factories\Factory;
+
 function getUrl()
 {
     $url = ((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
@@ -9,12 +11,12 @@ function getUrl()
 
 function global_factory()
 {
-    return \app\factories\Factory::class;
+    return Factory::class;
 }
 
 function factory($factory)
 {
-    return \app\factories\Factory::$factory();
+    return Factory::$factory();
 }
 
 function controller($controller)

@@ -45,7 +45,7 @@ class MailHelper extends Helper
         $options = array_merge($options, self::$options);
         $options_str = self::optionsEncode($options);
 
-        return Factory::models()->createModel("Mail", [$to, $subject, $message, $options_str]);
+        return Factory::models()->createModel("MailModel", [$to, $subject, $message, $options_str]);
     }
 
     private static function buildWithAttachments($to, $from, $reply_to, $subject, $message, $files)
@@ -102,7 +102,7 @@ $attachment";
         ///
 
         return Factory::models()
-            ->createModel("Mail", [$to, $subject, $msg, $options_str]);
+            ->createModel("MailModel", [$to, $subject, $msg, $options_str]);
     }
 
     private static function optionsEncode($opt)

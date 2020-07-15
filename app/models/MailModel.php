@@ -4,14 +4,14 @@
 namespace app\models;
 
 
-class MailModel extends Model
+class MailModel extends \engine\base\Model
 {
     public $to, $subject,
         $message, $headers;
 
     public function __construct($to, $subject, $message, $headers)
     {
-        self::setData($this, func_get_args());
+        $this->setData(func_get_args());
     }
 
     public function send()

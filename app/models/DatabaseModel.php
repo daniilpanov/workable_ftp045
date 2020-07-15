@@ -35,6 +35,7 @@ class DatabaseModel extends Model
         catch (\PDOException $exception)
         {
             $this->pdo = false;
+            die($exception->getMessage() . "<p>" . $exception->getTraceAsString());
             // Logging
         }
 

@@ -17,67 +17,78 @@ if ($reviews)
         echo "<blockquote class='review'>";
         reviewItem("Автор", "author", $review->name);
         reviewItem("E-Mail", "email", $review->email);
-        reviewItem("Рейтинг", "rating", (int) $review->rating);
+        reviewItem("Рейтинг", "rating", echoRatingStars(5, "", (int) $review->rating, true));
         reviewItem("Отзыв", "content", $review->content);
         echo "</blockquote>";
     }
 }
+else
+    echo "<h4>Здесь пока ещё нет ни одного отзыва. Будьте первым, кто его оставит!</h4>";
 ?>
 
+<hr>
+<br>
 <!-- THE FORM FOR SENDING REVIEWS -->
 <form method="post">
-    <!--  -->
-    <input type="hidden" name="review">
-    <!--  -->
-    <div class="row">
-        <div class="col-md-4">
-            <label for="review-author">
-                Ваше имя <sup>&starf;</sup>:
-            </label>
-        </div>
-        <div class="col-md-8">
-            <input name="name" id="review-author" placeholder="Your name:" required>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <label for="review-email">
-                Ваш e-mail <sup>&starf;</sup>:
-            </label>
-        </div>
-        <div class="col-md-8">
-            <input name="email" id="review-email" placeholder="Your email:" required>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <label>
-                Рейтинг:
-            </label>
-        </div>
-        <div class="col-md-8">
-            <div class="radio-label">
-                <?php
-                echoRatingStars(5, "rating")
-                ?>
+    <fieldset class="standard-form">
+        <legend>ЗАПОЛНИТЕ ЭТУ ФОРМУ, ЧТОБЫ ОСТАВИТЬ ОТЗЫВ</legend>
+        <!--  -->
+        <input type="hidden" name="review">
+        <!--  -->
+        <div class="row">
+            <div class="col-md-4">
+                <label for="review-author">
+                    Ваше имя <sup>&starf;</sup>:
+                </label>
+            </div>
+            <div class="col-md-8">
+                <input name="name" id="review-author" placeholder="Your name:" required>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <label for="review-content">
-                Текст отзыва:
-            </label>
+        <div class="row">
+            <div class="col-md-4">
+                <label for="review-email">
+                    Ваш e-mail <sup>&starf;</sup>:
+                </label>
+            </div>
+            <div class="col-md-8">
+                <input name="email" id="review-email" placeholder="Your email:" required>
+            </div>
         </div>
-        <div class="col-md-8">
-            <textarea name="content" id="review-content" placeholder="Your review:"></textarea>
+        <div class="row">
+            <div class="col-md-4">
+                <label>
+                    Рейтинг:
+                </label>
+            </div>
+            <div class="col-md-8">
+                <div class="radio-label">
+                    <?= echoRatingStars(5, "rating") ?>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <button type="submit">
-                Отправить отзыв
-            </button>
+        <div class="row">
+            <div class="col-md-4">
+                <label for="review-content">
+                    Текст отзыва:
+                </label>
+            </div>
+            <div class="col-md-8">
+                <textarea name="content" id="review-content" placeholder="Your review:"></textarea>
+            </div>
         </div>
-    </div>
+        <div class="row"><hr></div>
+        <div class="row">
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-success">
+                    Отправить отзыв
+                </button>
+            </div>
+            <div class="col-md-4">
+                <button type="reset" class="btn btn-warning">
+                    Отмена
+                </button>
+            </div>
+        </div>
+    </fieldset>
 </form>

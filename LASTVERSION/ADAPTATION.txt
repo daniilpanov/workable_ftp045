@@ -1,0 +1,21 @@
+
+
+
+
+
+----------- JUST DO IT!!!!! YOU CAN DO IT!!! ----------
+
+
+
+ЧТО НУЖНО АДАПТИРОВАТЬ:
+- VIEWS
+- CONTROLLERS
+- MODELS (Usual and CRUD)
+- FACTORIES (a few)
+- CONFIG
+- LAYOUTS
+- HTML Module (post html output)
+
+ЧТО НУЖНО ДОДЕЛАТЬ:
+- Сам движок
+- *look into '../ТЗ.txt'*

@@ -96,8 +96,51 @@ div.header
     margin: 10px;
 }
 
+.spadd
+{
+    padding: 10px;
+}
+
+.mpadd
+{
+    padding: 15px;
+}
+
+.lpadd
+{
+    padding: 20px;
+}
+
 .vertical-center-extreme
 {
     display: flex;
     align-items: center;
+}
+
+.nobr
+{
+    white-space: nowrap;
+}
+
+/* images */
+.img-container
+{
+    cursor: pointer;
+}
+
+.img-subscr
+{
+    position: absolute;
+    padding: 20px;
+    z-index: 999;
+    bottom: 20px;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+
+    color: white;
+    background-color: rgba(0,0,0,.5);
+    width: 90%;
+
+    box-shadow: 0 0 20px 10px black;
 }

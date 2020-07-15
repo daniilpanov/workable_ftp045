@@ -66,8 +66,8 @@ else
 // GUEST POST
 if (!@$_SESSION['user'])
 {
-    $reg($post()->model("Contacts")->post("contacts")->method("contactsSend"));
-    $reg($post()->model("Review")->post("review")->method("reviewSend"));
+    $reg($post()->model("ContactsModel")->post("contacts")->method("contactsSend"));
+    $reg($post()->model("ReviewModel")->post("review")->method("reviewSend"));
 }
 // ADMIN POST
 else

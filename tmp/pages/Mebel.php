@@ -1,16 +1,24 @@
 <h3>Образцы мебели</h3>
-
+[hint]<strong>Подсказка:</strong> кликните по картинке, чтобы просмотреть картинки, связанные с ней[/hint]
 [frame class='row']
 [frame-item class='col-md-4']
-<img src="files/upload/images/carousel/1.jpg" alt="">
+[slider img='files/upload/images/carousel/1' quant='2' contact='true' subscr='Дверь входная состаренная']
 [/frame-item]
 [frame-item class='col-md-8 vertical-center-extreme']
-[slider img='files/upload/images/carousel/3' quant='4']
+[slider img='files/upload/images/carousel/3' contact='true' subscr='Винная стойка']
 [/frame-item]
-[frame-item class='col-md-8 vertical-center-extreme']
-<img src="files/upload/images/carousel/7.jpg" alt="">
+
+[frame-item class='col-md-7 vertical-center-extreme']
+[slider img='files/upload/images/carousel/7' quant='2' contact='true' subscr='Портал']
+[/frame-item]
+[frame-item class='col-md-5']
+[slider img='files/upload/images/carousel/11' contact='true' subscr='бар']
+[/frame-item]
+
+[frame-item class='col-md-8']
+[slider img='files/upload/images/carousel/20' quant='3' contact='true' subscr='бар']
 [/frame-item]
 [frame-item class='col-md-4']
-<img src="files/upload/images/carousel/11.jpg" alt="">
+[slider img='files/upload/images/carousel/21' contact='true' subscr='кухня']
 [/frame-item]
 [/frame]
