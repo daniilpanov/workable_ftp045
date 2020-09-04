@@ -86,14 +86,34 @@ img.no-zoom
     cursor: auto;
 }
 
-img.zoomed
+.zoomed
 {
+    cursor: zoom-out;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    box-shadow: 0 0 500px 250px black;
+    z-index: 999999;
+}
+.zoomed img
+{
+    width: 100%;
+    height: 100%;
     cursor: zoom-out;
 }
 
 img[aria-controls]
 {
-    cursor: pointer;
+    cursor: pointer !important;
+}
+
+.carousel-item img
+{
+    cursor: default;
 }
 
 a
@@ -305,19 +325,6 @@ div.radio-label:hover
 .sidebar
 {
     max-width: 350px;
-}
-
-.zoomed
-{
-    text-align: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    box-shadow: 0 0 500px 250px black;
-    z-index: 999999;
 }
 
 

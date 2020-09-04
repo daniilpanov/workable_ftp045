@@ -18,7 +18,7 @@
 [frame-item class='col-md-8']
 [slider img='files/upload/images/carousel/20' quant='3' contact='true' subscr='бар']
 [/frame-item]
-[frame-item class='col-md-4']
+[frame-item class='col-md-4 vertical-center-extreme']
 [slider img='files/upload/images/carousel/21' contact='true' subscr='кухня']
 [/frame-item]
 [/frame]

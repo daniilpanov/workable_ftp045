@@ -15,77 +15,76 @@ $.preloadImages("files/base/images/brand.jpg"); // верхняя картинк
 
 // Ждём подготовки всего документа
 $(document).ready(function () {
-    //
-    //
+    // ПЕРЕМЕННЫЕ, КОТОРЫЕ ПОНАДОБЯТСЯ ВО МНОГИХ ЧАСТЯХ СКРИПТА
+    let body = $("body");
+
+    // Маштабирование логотипа (картинки в шапке)
     let el = $("#brand");
+    // получаем пропорцию
     let prop = el.width() / el.height();
-
-    el.width(window.innerWidth - 45);
-    el.height(el.width() / prop - 50);
-
-    window.onresize = (function () {
+    // создаём функцию маштабирования
+    let scale_logo = (function () {
         el.width(window.innerWidth - 45);
         el.height(el.width() / prop - 50);
     });
+    // вызываем её
+    scale_logo();
+    // логотип должен маштаюироваться при каждом изменении размера экрана
+    window.onresize = scale_logo;
 
 
-    //
+    // Активируем рейтинговые звёзды (для отзывов)
     ratingSetUp();
 
 
-    //
-    var clk1;
-    //
+    // Маштабирование изображений -- ZOOM
+    // объявляем переменную для записи в неё функции
+    let clk1;
+    // перебираем все картинки
     $("img").each(function (index, element)
     {
-        //
+        let e = $(this);
+        // создаём функцию
         clk1 = (function ()
         {
+            // если изображение уже увеличено - завершаем работу функции
             if (img_zoomed)
                 return;
 
-            var e = $(this);
-            //
-            $("body").css("overflow-y", "hidden");
-            //
-            e.unbind("click");
-            //
-            var new_el = $("<img src='" + e.prop("src") + "' class='zoomed' alt='Sorry, this image cannot be zoomed!'>")
+            // убираем возможность прокрутки контента
+            body.css("overflow-y", "hidden");
+            // создаём увеличенную картинку
+            var new_el = $("<div class='zoomed'><img src='" + e.prop("src") + "' alt='Sorry, this image cannot be zoomed!'></div>")
                 .appendTo("body");
 
-            var new_width = e.width() * 3, new_height = e.height() * 3;
+            var new_width = window.innerWidth - 250,
+                prop = e.height() / e.width(),
+                new_height = prop * new_width;
 
-            if (new_width > window.innerWidth || new_height > window.innerHeight)
+            if (new_height > window.innerHeight - 250)
             {
-                var prop;
-                if (new_width > new_height)
-                {
-                    prop = e.height() / e.width();
-                    new_width = window.innerWidth;
-                    new_height = new_width * prop;
-                }
-                else
-                {
-                    prop = e.width() / e.height();
-                    new_height = window.innerHeight;
-                    new_width = new_height * prop;
-                }
+                new_height = window.innerHeight - 250;
+                new_width = new_height / prop;
             }
 
             img_zoomed = true;
+            var f_ret = (function ()
+            {
+                //
+                body.css("overflow-y", "scroll");
+                //
+                new_el.remove();
+                body.unbind("click");
+
+                img_zoomed = false;
+            });
 
             new_el.width(new_width).height(new_height)
-                .click(function ()
-                {
-                    //
-                    e.click(clk1);
-                    //
-                    $("body").css("overflow-y", "scroll");
-                    //
-                    $(this).remove();
+                .click(f_ret);
 
-                    img_zoomed = false;
-                });
+            setTimeout(function () {
+                body.click(f_ret);
+            });
         });
 
         //

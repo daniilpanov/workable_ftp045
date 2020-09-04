@@ -164,7 +164,7 @@
 <body>
 <!-- Контент страницы -->
 <div class="container text-center">
-    <img src="../files/upload/images/carousel/2.1.jpg" alt="..." aria-label="2">
+    <img src="../files/upload/images/carousel/stairs.1.1.jpg" alt="..." aria-label="2">
     <h1 class="h3" style="margin-top: 20px; margin-bottom: 5px;">Bootstrap 3 - Carousel (карусель)</h1>
     <h2 class="h4" style="margin-top: 0; margin-bottom: 20px;">без элементов управления</h2>
 
@@ -180,16 +180,16 @@
             </ol>
             <td class="carousel-inner zoomed">
                 <div class="carousel-item active text-center">
-                    <img class="img-fluid" src="../files/upload/images/carousel/2.2.jpg" alt="...">
+                    <img class="img-fluid" src="../files/upload/images/carousel/stairs.1.2.jpg" alt="...">
                 </div>
                 <div class="carousel-item text-center">
-                    <img class="img-fluid" src="../files/upload/images/carousel/2.3.jpg" alt="...">
+                    <img class="img-fluid" src="../files/upload/images/carousel/stairs.1.3.jpg" alt="...">
                 </div>
                 <div class="carousel-item text-center">
-                    <img class="img-fluid" src="../files/upload/images/carousel/2.4.jpg" alt="...">
+                    <img class="img-fluid" src="../files/upload/images/carousel/stairs.1.4.jpg" alt="...">
                 </div>
                 <div class="carousel-item text-center">
-                    <img class="img-fluid" src="../files/upload/images/carousel/2.5.jpg" alt="...">
+                    <img class="img-fluid" src="../files/upload/images/carousel/stairs.1.5.jpg" alt="...">
                 </div>
             </td>
             <!-- Элементы управления -->
